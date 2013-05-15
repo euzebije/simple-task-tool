@@ -11,7 +11,10 @@ namespace STT.Model.Entity
         public UserAccount Owner { get; set; }
         public ICollection<WorkItem> WorkItems { get; set; }
 
-        public Project(){}
+        public Project()
+        {
+            WorkItems = new List<WorkItem>();
+        }
         public Project(string name, string description, UserAccount owner)
         {
             if (string.IsNullOrEmpty(name))

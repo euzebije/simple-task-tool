@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using STT.Model.Entity;
 
@@ -46,7 +47,14 @@ namespace STT.Model.Test
             const Priority priority = Priority.Normal;
             var type = new WorkItemType();
             var parent = new WorkItem();
+            var children = new List<WorkItem>
+                               {
+                                   new WorkItem(),
+                                   new WorkItem(),
+                                   new WorkItem()
+                               };
             const bool isFinished = true;
+            var project = new Project();
 
             var workItem = new WorkItem
                                {
@@ -59,7 +67,9 @@ namespace STT.Model.Test
                                    Priority = priority,
                                    Type = type,
                                    Parent = parent,
-                                   IsFinished = isFinished
+                                   Children = children,
+                                   IsFinished = isFinished,
+                                   Project = project
                                };
 
             Assert.AreNotEqual(Guid.Empty, workItem.Key);
@@ -72,7 +82,9 @@ namespace STT.Model.Test
             Assert.AreEqual(priority, workItem.Priority);
             Assert.AreEqual(type, workItem.Type);
             Assert.AreEqual(parent, workItem.Parent);
+            Assert.AreEqual(children, workItem.Children);
             Assert.AreEqual(isFinished, workItem.IsFinished);
+            Assert.AreEqual(project, workItem.Project);
         }
 
         [Test]
@@ -83,8 +95,9 @@ namespace STT.Model.Test
             var createdBy = new UserAccount();
             const Priority priority = Priority.Normal;
             var type = new WorkItemType();
+            var project = new Project();
 
-            var workItem = new WorkItem(title, description, createdBy, priority, type);
+            var workItem = new WorkItem(title, description, createdBy, priority, type, project);
 
             Assert.AreNotEqual(Guid.Empty, workItem.Key);
             Assert.AreEqual(title, workItem.Title);
@@ -94,7 +107,9 @@ namespace STT.Model.Test
             Assert.AreEqual(priority, workItem.Priority);
             Assert.AreEqual(type, workItem.Type);
             Assert.AreEqual(null, workItem.Parent);
+            Assert.IsNotNull(workItem.Children);
             Assert.AreEqual(false, workItem.IsFinished);
+            Assert.AreEqual(project, workItem.Project);
         }
 
         [Test]
@@ -106,8 +121,9 @@ namespace STT.Model.Test
             const Priority priority = Priority.Normal;
             var type = new WorkItemType();
             var parent = new WorkItem();
+            var project = new Project();
 
-            var workItem = new WorkItem(title, description, createdBy, priority, type, parent);
+            var workItem = new WorkItem(title, description, createdBy, priority, type, project, parent);
 
             Assert.AreNotEqual(Guid.Empty, workItem.Key);
             Assert.AreEqual(title, workItem.Title);
@@ -117,7 +133,9 @@ namespace STT.Model.Test
             Assert.AreEqual(priority, workItem.Priority);
             Assert.AreEqual(type, workItem.Type);
             Assert.AreEqual(parent, workItem.Parent);
+            Assert.IsNotNull(workItem.Children);
             Assert.AreEqual(false, workItem.IsFinished);
+            Assert.AreEqual(project, workItem.Project);
         }
     }
 }

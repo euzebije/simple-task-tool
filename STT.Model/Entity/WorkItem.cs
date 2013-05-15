@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace STT.Model.Entity
 {
@@ -12,11 +13,16 @@ namespace STT.Model.Entity
         public DateTime LastUpdate { get; set; }
         public Priority Priority { get; set; }
         public WorkItemType Type { get; set; }
+        public Project Project { get; set; }
         public WorkItem Parent { get; set; }
+        public ICollection<WorkItem> Children { get; set; }
         public bool IsFinished { get; set; }
 
-        public WorkItem(){}
-        public WorkItem(string title, string description, UserAccount createdBy, Priority priority, WorkItemType type)
+        public WorkItem()
+        {
+            Children = new List<WorkItem>();
+        }
+        public WorkItem(string title, string description, UserAccount createdBy, Priority priority, WorkItemType type, Project project)
         {
             if (string.IsNullOrEmpty(title))
                 throw new ArgumentNullException("title");
@@ -26,6 +32,8 @@ namespace STT.Model.Entity
                 throw new ArgumentNullException("createdBy");
             if (type == null)
                 throw new ArgumentNullException("type");
+            if (project == null)
+                throw new ArgumentNullException("project");
 
             Title = title;
             Description = description;
@@ -37,8 +45,10 @@ namespace STT.Model.Entity
 
             Priority = priority;
             Type = type;
+            Project = project;
+            Children = new List<WorkItem>();
         }
-        public WorkItem(string title, string description, UserAccount createdBy, Priority priority, WorkItemType type, WorkItem parent)
+        public WorkItem(string title, string description, UserAccount createdBy, Priority priority, WorkItemType type, Project project, WorkItem parent)
         {
             if (string.IsNullOrEmpty(title))
                 throw new ArgumentNullException("title");
@@ -48,6 +58,8 @@ namespace STT.Model.Entity
                 throw new ArgumentNullException("createdBy");
             if (type == null)
                 throw new ArgumentNullException("type");
+            if (project == null)
+                throw new ArgumentNullException("project");
             if (parent == null)
                 throw new ArgumentNullException("parent");
 
@@ -61,7 +73,9 @@ namespace STT.Model.Entity
 
             Priority = priority;
             Type = type;
+            Project = project;
             Parent = parent;
+            Children = new List<WorkItem>();
         }
     }
 }

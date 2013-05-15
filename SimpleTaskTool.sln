@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Model", "STT.Model\STT.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Model.Test", "STT.Model.Test\STT.Model.Test.csproj", "{3CE08C6E-35D6-4492-B221-56EC8BB8FEB3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{9D298B92-3AD7-400C-880B-FBDB7191944D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,5 +24,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{23C2BE2F-1B7D-44FE-B390-E0450540A18B} = {9D298B92-3AD7-400C-880B-FBDB7191944D}
+		{3CE08C6E-35D6-4492-B221-56EC8BB8FEB3} = {9D298B92-3AD7-400C-880B-FBDB7191944D}
 	EndGlobalSection
 EndGlobal
