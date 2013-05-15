@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace STT.Model.Entity
+{
+    public class Project : EntityBase
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public UserAccount Owner { get; set; }
+        public ICollection<WorkItem> WorkItems { get; set; }
+
+        public Project(){}
+        public Project(string name, string description, UserAccount owner)
+        {
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentNullException("name");
+            if (string.IsNullOrEmpty(description))
+                throw new ArgumentNullException("description");
+            if (owner == null)
+                throw new ArgumentNullException("owner");
+
+            Name = name;
+            Description = description;
+            CreatedOn = DateTime.Now;
+            Owner = owner;
+            WorkItems = new List<WorkItem>();
+        }
+    }
+}

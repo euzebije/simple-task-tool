@@ -40,8 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\EntityBase.cs" />
+    <Compile Include="Entity\Priority.cs" />
+    <Compile Include="Entity\Project.cs" />
     <Compile Include="Entity\UserAccount.cs" />
     <Compile Include="Entity\WorkItem.cs" />
+    <Compile Include="Entity\WorkItemType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

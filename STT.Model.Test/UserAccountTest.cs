@@ -35,7 +35,7 @@ namespace STT.Model.Test
         }
 
         [Test]
-        public void CreateUserAccountAndFillBasicData()
+        public void CreateUserAccountViaDefaultConstructor()
         {
             const string username = "test";
             var created = DateTime.Now;
@@ -43,17 +43,34 @@ namespace STT.Model.Test
             const bool isActive = true;
             const bool isPowerUser = true;
             
-            var userAccount = new UserAccount(username)
+            var userAccount = new UserAccount
                                   {
+                                      Username = username,
                                       CreatedOn = created,
                                       LastLogin = lastLogin,
                                       IsActive = isActive,
                                       IsPowerUser = isPowerUser
                                   };
 
+            Assert.AreNotEqual(Guid.Empty, userAccount.Key);
             Assert.AreEqual(username, userAccount.Username);
             Assert.AreEqual(created, userAccount.CreatedOn);
             Assert.AreEqual(lastLogin, userAccount.LastLogin);
+            Assert.AreEqual(isActive, userAccount.IsActive);
+            Assert.AreEqual(isPowerUser, userAccount.IsPowerUser);
+        }
+
+        [Test]
+        public void CreateUserAccountViaNonDefaultConstructor()
+        {
+            const string username = "test";
+            const bool isActive = true;
+            const bool isPowerUser = true;
+
+            var userAccount = new UserAccount(username, isActive, isPowerUser);
+
+            Assert.AreNotEqual(Guid.Empty, userAccount.Key);
+            Assert.AreEqual(username, userAccount.Username);
             Assert.AreEqual(isActive, userAccount.IsActive);
             Assert.AreEqual(isPowerUser, userAccount.IsPowerUser);
         }

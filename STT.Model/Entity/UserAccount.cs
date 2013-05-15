@@ -4,20 +4,26 @@ namespace STT.Model.Entity
 {
     public class UserAccount : EntityBase
     {
-        public override Guid Key { get; set; }
-
         public string Username { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime LastLogin { get; set; }
         public bool IsActive { get; set; }
         public bool IsPowerUser { get; set; }
 
-        public UserAccount()
+        public UserAccount(){}
+        public UserAccount(string username, bool isActive, bool isPowerUser)
         {
-        }
-        public UserAccount(string username)
-        {
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentNullException("username");
+
             Username = username;
+            
+            var now = DateTime.Now;
+            CreatedOn = now;
+            LastLogin = now;
+
+            IsActive = isActive;
+            IsPowerUser = isPowerUser;
         }
     }
 }
