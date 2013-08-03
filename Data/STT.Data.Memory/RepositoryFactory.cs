@@ -9,6 +9,14 @@ namespace STT.Data.Memory
         private IWorkItemTypeRepository _workItemTypeRepository;
         private IProjectRepository _projectRepository;
 
+        public RepositoryFactory()
+        {
+            // Create default user account
+            var repo = GetUserAccountRepository();
+            var admin = new UserAccount("admin", "pwd", true, true);
+            repo.Save(admin);
+        }
+
         public IRepositoryBase<TModel> GetRepository<TModel>() where TModel : EntityBase
         {
             object repo = null;

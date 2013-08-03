@@ -52,6 +52,7 @@
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Prism.4.1.0.0\lib\NET40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,10 +62,19 @@
   <ItemGroup>
     <Compile Include="Mock\MockViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\LoginViewModelTest.cs" />
     <Compile Include="UserAccountViewModelTest.cs" />
     <Compile Include="ViewModelBaseTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Data\STT.Data.Memory\STT.Data.Memory.csproj">
+      <Project>{1ed7835f-5283-42e9-894a-0d8bf5eed5e6}</Project>
+      <Name>STT.Data.Memory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Data\STT.Data\STT.Data.csproj">
+      <Project>{4bb17672-45dc-42ba-af95-901050520841}</Project>
+      <Name>STT.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Model\STT.Model\STT.Model.csproj">
       <Project>{23c2be2f-1b7d-44fe-b390-e0450540a18b}</Project>
       <Name>STT.Model</Name>
