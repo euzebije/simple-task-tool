@@ -13,7 +13,15 @@ namespace STT.UI.Desktop.ViewModel
         public string Username
         {
             get { return Model.Username; }
+            set {
+                if (Model.Username != value)
+                {
+                    Model.Username = value;
+                    RaisePropertyChanged(() => Username);
+                }
+            }
         }
+
         public DateTime CreatedOn
         {
             get { return Model.CreatedOn; }

@@ -7,13 +7,13 @@ namespace STT.UI.Desktop.ViewModel.Test
     public class ViewModelBaseTest
     {
         [Test]
-        public void NotifyPropertyChangedImplicit()
+        public void NotifyPropertyChangedExpression()
         {
             var viewModel = new MockViewModel();
             viewModel.PropertyChanged +=
-                (sender, args) => Assert.AreEqual("ImplicitNotificationProperty", args.PropertyName);
+                (sender, args) => Assert.That(args.PropertyName, Is.EqualTo("ExpressionNotificationProperty"));
 
-            viewModel.ImplicitNotificationProperty = "test";
+            viewModel.ExpressionNotificationProperty = "test";
         }
 
         [Test]
@@ -21,9 +21,9 @@ namespace STT.UI.Desktop.ViewModel.Test
         {
             var viewModel = new MockViewModel();
             viewModel.PropertyChanged +=
-                (sender, args) => Assert.AreEqual("ExplicitNotificationProperty", args.PropertyName);
+                (sender, args) => Assert.That(args.PropertyName, Is.EqualTo("StringNotificationProperty"));
 
-            viewModel.ExplicitNotificationProperty = "test";
+            viewModel.StringNotificationProperty = "test";
         }
     }
 }

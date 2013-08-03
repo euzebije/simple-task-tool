@@ -11,27 +11,27 @@ namespace STT.UI.Desktop.ViewModel.Test
         {
             var model = new UserAccount();
             var viewModel = new UserAccountViewModel(model);
-            Assert.IsNotNull(viewModel);
+            Assert.That(viewModel, Is.Not.Null);
         }
 
         [Test]
         public void UserAccountViewModelInheritsViewModelBase()
         {
             var viewModel = new UserAccountViewModel(new UserAccount());
-            Assert.IsInstanceOf<ViewModelBase>(viewModel);
+            Assert.That(viewModel, Is.InstanceOf<ViewModelBase>());
         }
 
         [Test]
         public void ViewModelWrapsModel()
         {
-            var model = new UserAccount("test", false, false);
+            var model = new UserAccount("test", "password", false, false);
             var viewModel = new UserAccountViewModel(model);
 
-            Assert.AreEqual(model.Username, viewModel.Username);
-            Assert.AreEqual(model.CreatedOn, viewModel.CreatedOn);
-            Assert.AreEqual(model.LastLogin, viewModel.LastLogin);
-            Assert.AreEqual(model.IsActive, viewModel.IsActive);
-            Assert.AreEqual(model.IsPowerUser, viewModel.IsPowerUser);
+            Assert.That(viewModel.Username, Is.EqualTo(model.Username));
+            Assert.That(viewModel.CreatedOn, Is.EqualTo(model.CreatedOn));
+            Assert.That(viewModel.LastLogin, Is.EqualTo(model.LastLogin));
+            Assert.That(viewModel.IsActive, Is.EqualTo(model.IsActive));
+            Assert.That(viewModel.IsPowerUser, Is.EqualTo(model.IsPowerUser));
         }
     }
 }

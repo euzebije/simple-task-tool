@@ -2,31 +2,28 @@
 {
     public class MockViewModel : ViewModelBase
     {
-        private string _implicitNotificationProperty;
-        public string ImplicitNotificationProperty
+        private string _expressionNotificationProperty;
+        private string _stringNotificationProperty;
+
+        public string ExpressionNotificationProperty
         {
-            get { return _implicitNotificationProperty; }
+            get { return _expressionNotificationProperty; }
             set
             {
-                if (value != _implicitNotificationProperty)
-                {
-                    _implicitNotificationProperty = value;
-                    OnPropertyChanged();
-                }
+                if (value == _expressionNotificationProperty) return;
+                _expressionNotificationProperty = value;
+                RaisePropertyChanged(() => ExpressionNotificationProperty);
             }
         }
 
-        private string _explicitNotificationProperty;
-        public string ExplicitNotificationProperty
+        public string StringNotificationProperty
         {
-            get { return _explicitNotificationProperty; }
+            get { return _stringNotificationProperty; }
             set
             {
-                if (value != _explicitNotificationProperty)
-                {
-                    _explicitNotificationProperty = value;
-                    OnPropertyChanged("ExplicitNotificationProperty");
-                }
+                if (value == _stringNotificationProperty) return;
+                _stringNotificationProperty = value;
+                RaisePropertyChanged("StringNotificationProperty");
             }
         }
     }
