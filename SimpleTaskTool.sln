@@ -1,27 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Model", "STT.Model\STT.Model.csproj", "{23C2BE2F-1B7D-44FE-B390-E0450540A18B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Model.Test", "STT.Model.Test\STT.Model.Test.csproj", "{3CE08C6E-35D6-4492-B221-56EC8BB8FEB3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{9D298B92-3AD7-400C-880B-FBDB7191944D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C5ED98F7-8756-430C-9D6C-868BE694D14B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Data", "STT.Data\STT.Data.csproj", "{4BB17672-45DC-42BA-AF95-901050520841}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Data.Memory", "STT.Data.Memory\STT.Data.Memory.csproj", "{1ED7835F-5283-42E9-894A-0D8BF5EED5E6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Data.Memory.Test", "STT.Data.Memory.Test\STT.Data.Memory.Test.csproj", "{0759BF4B-1F9E-48DC-AD6D-8DB5744CA93A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{33410C17-9863-44F5-BBB5-5F41A6C4CB1C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{D21F72C0-5C8C-405D-8903-27737948B833}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.UI.Desktop.ViewModel", "STT.UI.Desktop.ViewModel\STT.UI.Desktop.ViewModel.csproj", "{EE5B16C0-CA26-450D-94E2-4F0B3F193D58}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.UI.Desktop.ViewModel.Test", "STT.UI.Desktop.ViewModel.Test\STT.UI.Desktop.ViewModel.Test.csproj", "{3C3EC726-B768-40D0-A821-B7F4725FBA8F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E8E7928C-12F4-4719-A6F8-40CE63EDFCB6}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,6 +15,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E8E792
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Model", "Model\STT.Model\STT.Model.csproj", "{23C2BE2F-1B7D-44FE-B390-E0450540A18B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Model.Test", "Model\STT.Model.Test\STT.Model.Test.csproj", "{3CE08C6E-35D6-4492-B221-56EC8BB8FEB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Data", "Data\STT.Data\STT.Data.csproj", "{4BB17672-45DC-42BA-AF95-901050520841}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Data.Memory", "Data\STT.Data.Memory\STT.Data.Memory.csproj", "{1ED7835F-5283-42E9-894A-0D8BF5EED5E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.Data.Memory.Test", "Data\STT.Data.Memory.Test\STT.Data.Memory.Test.csproj", "{0759BF4B-1F9E-48DC-AD6D-8DB5744CA93A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.UI.Desktop.ViewModel", "UI\Desktop\STT.UI.Desktop.ViewModel\STT.UI.Desktop.ViewModel.csproj", "{EE5B16C0-CA26-450D-94E2-4F0B3F193D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STT.UI.Desktop.ViewModel.Test", "UI\Desktop\STT.UI.Desktop.ViewModel.Test\STT.UI.Desktop.ViewModel.Test.csproj", "{3C3EC726-B768-40D0-A821-B7F4725FBA8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,8 +69,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3CE08C6E-35D6-4492-B221-56EC8BB8FEB3} = {9D298B92-3AD7-400C-880B-FBDB7191944D}
 		{23C2BE2F-1B7D-44FE-B390-E0450540A18B} = {9D298B92-3AD7-400C-880B-FBDB7191944D}
+		{3CE08C6E-35D6-4492-B221-56EC8BB8FEB3} = {9D298B92-3AD7-400C-880B-FBDB7191944D}
 		{4BB17672-45DC-42BA-AF95-901050520841} = {C5ED98F7-8756-430C-9D6C-868BE694D14B}
 		{1ED7835F-5283-42E9-894A-0D8BF5EED5E6} = {C5ED98F7-8756-430C-9D6C-868BE694D14B}
 		{0759BF4B-1F9E-48DC-AD6D-8DB5744CA93A} = {C5ED98F7-8756-430C-9D6C-868BE694D14B}
