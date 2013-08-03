@@ -18,7 +18,7 @@ namespace STT.Data.Memory.Test
         public void CreateRepository()
         {
             var repository = GetRepository();
-            Assert.IsNotNull(repository);
+            Assert.That(repository, Is.Not.Null);
         }
 
         [Test]
@@ -27,10 +27,10 @@ namespace STT.Data.Memory.Test
             var repository = GetRepository();
             var workItemType = new WorkItemType();
             
-            Assert.IsNull(repository.Find(workItemType.Key));
+            Assert.That(repository.Find(workItemType.Key), Is.Null);
 
             repository.Save(workItemType);
-            Assert.AreEqual(workItemType, repository.Find(workItemType.Key));
+            Assert.That(repository.Find(workItemType.Key), Is.EqualTo(workItemType));
         }
 
         [Test]
@@ -41,13 +41,13 @@ namespace STT.Data.Memory.Test
             repository.Save(workItemType);
 
             var savedUser = repository.Find(workItemType.Key);
-            Assert.AreEqual(workItemType.Name, savedUser.Name);
+            Assert.That(savedUser.Name, Is.EqualTo(workItemType.Name));
 
             workItemType.Name = "test";
             repository.Save(workItemType);
 
             savedUser = repository.Find(workItemType.Key);
-            Assert.AreEqual(workItemType.Name, savedUser.Name);
+            Assert.That(savedUser.Name, Is.EqualTo(workItemType.Name));
         }
 
         [Test]
@@ -57,10 +57,10 @@ namespace STT.Data.Memory.Test
             var workItemType = new WorkItemType();
             repository.Save(workItemType);
 
-            Assert.IsNotNull(repository.Find(workItemType.Key));
+            Assert.That(repository.Find(workItemType.Key), Is.Not.Null);
             
             repository.Delete(workItemType);
-            Assert.IsNull(repository.Find(workItemType.Key));
+            Assert.That(repository.Find(workItemType.Key), Is.Null);
         }
 
         [Test]
@@ -74,8 +74,8 @@ namespace STT.Data.Memory.Test
             repository.Save(workItemType1);
             repository.Save(workItemType2);
 
-            Assert.AreEqual(workItemType1, repository.Find(workItemType1.Key));
-            Assert.AreEqual(workItemType2, repository.Find(workItemType2.Key));
+            Assert.That(repository.Find(workItemType1.Key), Is.EqualTo(workItemType1));
+            Assert.That(repository.Find(workItemType2.Key), Is.EqualTo(workItemType2));
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace STT.Data.Memory.Test
             var savedItems = repository.Get().ToList();
             foreach (var item in items)
             {
-                Assert.Contains(item, savedItems);
+                Assert.That(savedItems, Contains.Item(item));
             }
         }
     }

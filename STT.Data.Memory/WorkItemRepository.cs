@@ -26,14 +26,14 @@ namespace STT.Data.Memory
             }
         }
 
-        public WorkItem FindWithChildren(Guid key)
-        {
-            return Find(key);
-        }
-
         public IEnumerable<WorkItem> GetWithChildren()
         {
             return Get();
+        }
+
+        public WorkItem FindWithChildren(Guid key)
+        {
+            return Find(key);
         }
     }
 }

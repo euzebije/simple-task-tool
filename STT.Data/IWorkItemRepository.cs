@@ -6,7 +6,7 @@ namespace STT.Data
 {
     public interface IWorkItemRepository : IRepositoryBase<WorkItem>
     {
-        WorkItem FindWithChildren(Guid key);
         IEnumerable<WorkItem> GetWithChildren();
+        WorkItem FindWithChildren(Guid key);
     }
 }

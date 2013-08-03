@@ -6,7 +6,7 @@ namespace STT.Data
 {
     public interface IProjectRepository : IRepositoryBase<Project>
     {
-        Project FindWithWorkItems(Guid key);
         IEnumerable<Project> GetWithWorkItems();
+        Project FindWithWorkItems(Guid key);
     }
 }

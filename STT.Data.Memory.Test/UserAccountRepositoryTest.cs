@@ -18,7 +18,7 @@ namespace STT.Data.Memory.Test
         public void CreateRepository()
         {
             var repository = GetRepository();
-            Assert.IsNotNull(repository);
+            Assert.That(repository, Is.Not.Null);
         }
 
         [Test]
@@ -27,10 +27,10 @@ namespace STT.Data.Memory.Test
             var repository = GetRepository();
             var userAccount = new UserAccount();
             
-            Assert.IsNull(repository.Find(userAccount.Key));
+            Assert.That(repository.Find(userAccount.Key), Is.Null);
 
             repository.Save(userAccount);
-            Assert.AreEqual(userAccount, repository.Find(userAccount.Key));
+            Assert.That(repository.Find(userAccount.Key), Is.EqualTo(userAccount));
         }
 
         [Test]
@@ -41,13 +41,13 @@ namespace STT.Data.Memory.Test
             repository.Save(userAccount);
 
             var savedUser = repository.Find(userAccount.Key);
-            Assert.AreEqual(userAccount.Username, savedUser.Username);
+            Assert.That(savedUser.Username, Is.EqualTo(userAccount.Username));
 
             userAccount.Username = "test";
             repository.Save(userAccount);
 
             savedUser = repository.Find(userAccount.Key);
-            Assert.AreEqual(userAccount.Username, savedUser.Username);
+            Assert.That(savedUser.Username, Is.EqualTo(userAccount.Username));
         }
 
         [Test]
@@ -57,10 +57,10 @@ namespace STT.Data.Memory.Test
             var userAccount = new UserAccount();
             repository.Save(userAccount);
 
-            Assert.IsNotNull(repository.Find(userAccount.Key));
+            Assert.That(repository.Find(userAccount.Key), Is.Not.Null);
             
             repository.Delete(userAccount);
-            Assert.IsNull(repository.Find(userAccount.Key));
+            Assert.That(repository.Find(userAccount.Key), Is.Null);
         }
 
         [Test]
@@ -74,8 +74,8 @@ namespace STT.Data.Memory.Test
             repository.Save(userAccount1);
             repository.Save(userAccount2);
 
-            Assert.AreEqual(userAccount1, repository.Find(userAccount1.Key));
-            Assert.AreEqual(userAccount2, repository.Find(userAccount2.Key));
+            Assert.That(repository.Find(userAccount1.Key), Is.EqualTo(userAccount1));
+            Assert.That(repository.Find(userAccount2.Key), Is.EqualTo(userAccount2));
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace STT.Data.Memory.Test
             var savedItems = repository.Get().ToList();
             foreach (var item in items)
             {
-                Assert.Contains(item, savedItems);
+                Assert.That(savedItems, Contains.Item(item));
             }
         }
     }

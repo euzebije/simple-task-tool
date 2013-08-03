@@ -18,7 +18,7 @@ namespace STT.Data.Memory.Test
         public void CreateRepository()
         {
             var repository = GetRepository();
-            Assert.IsNotNull(repository);
+            Assert.That(repository, Is.Not.Null);
         }
 
         [Test]
@@ -27,10 +27,10 @@ namespace STT.Data.Memory.Test
             var repository = GetRepository();
             var workItem = new WorkItem();
             
-            Assert.IsNull(repository.Find(workItem.Key));
+            Assert.That(repository.Find(workItem.Key), Is.Null);
 
             repository.Save(workItem);
-            Assert.AreEqual(workItem, repository.Find(workItem.Key));
+            Assert.That(repository.Find(workItem.Key), Is.EqualTo(workItem));
         }
 
         [Test]
@@ -41,13 +41,13 @@ namespace STT.Data.Memory.Test
             repository.Save(workItem);
 
             var savedUser = repository.Find(workItem.Key);
-            Assert.AreEqual(workItem.Title, savedUser.Title);
+            Assert.That(savedUser.Title, Is.EqualTo(workItem.Title));
 
             workItem.Title = "test";
             repository.Save(workItem);
 
             savedUser = repository.Find(workItem.Key);
-            Assert.AreEqual(workItem.Title, savedUser.Title);
+            Assert.That(savedUser.Title, Is.EqualTo(workItem.Title));
         }
 
         [Test]
@@ -57,10 +57,10 @@ namespace STT.Data.Memory.Test
             var workItem = new WorkItem();
             repository.Save(workItem);
 
-            Assert.IsNotNull(repository.Find(workItem.Key));
+            Assert.That(repository.Find(workItem.Key), Is.Not.Null);
             
             repository.Delete(workItem);
-            Assert.IsNull(repository.Find(workItem.Key));
+            Assert.That(repository.Find(workItem.Key), Is.Null);
         }
 
         [Test]
@@ -74,8 +74,8 @@ namespace STT.Data.Memory.Test
             repository.Save(workItem1);
             repository.Save(workItem2);
 
-            Assert.AreEqual(workItem1, repository.Find(workItem1.Key));
-            Assert.AreEqual(workItem2, repository.Find(workItem2.Key));
+            Assert.That(repository.Find(workItem1.Key), Is.EqualTo(workItem1));
+            Assert.That(repository.Find(workItem2.Key), Is.EqualTo(workItem2));
         }
 
         [Test]
@@ -97,9 +97,9 @@ namespace STT.Data.Memory.Test
 
             var savedItem = repository.Find(workItem.Key);
             var children = savedItem.Children.ToList();
-            Assert.Contains(child1, children);
-            Assert.Contains(child2, children);
-            Assert.Contains(child3, children);
+            Assert.That(children, Contains.Item(child1));
+            Assert.That(children, Contains.Item(child2));
+            Assert.That(children, Contains.Item(child3));
         }
 
         [Test]
@@ -122,7 +122,7 @@ namespace STT.Data.Memory.Test
             var savedItems = repository.Get().ToList();
             foreach (var item in items)
             {
-                Assert.Contains(item, savedItems);
+                Assert.That(savedItems, Contains.Item(item));
             }
         }
 
@@ -157,7 +157,7 @@ namespace STT.Data.Memory.Test
                     var children = savedItem.Children.ToList();
                     foreach (var child in item.Children)
                     {
-                        Assert.Contains(child, children);
+                        Assert.That(children, Contains.Item(child));
                     }
                 }
             }
