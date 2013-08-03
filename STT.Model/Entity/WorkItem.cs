@@ -24,9 +24,9 @@ namespace STT.Model.Entity
         }
         public WorkItem(string title, string description, UserAccount createdBy, Priority priority, WorkItemType type, Project project)
         {
-            if (string.IsNullOrEmpty(title))
+            if (string.IsNullOrWhiteSpace(title))
                 throw new ArgumentNullException("title");
-            if (string.IsNullOrEmpty(description))
+            if (string.IsNullOrWhiteSpace(description))
                 throw new ArgumentNullException("description");
             if (createdBy == null)
                 throw new ArgumentNullException("createdBy");
@@ -46,13 +46,14 @@ namespace STT.Model.Entity
             Priority = priority;
             Type = type;
             Project = project;
+            
             Children = new List<WorkItem>();
         }
         public WorkItem(string title, string description, UserAccount createdBy, Priority priority, WorkItemType type, Project project, WorkItem parent)
         {
-            if (string.IsNullOrEmpty(title))
+            if (string.IsNullOrWhiteSpace(title))
                 throw new ArgumentNullException("title");
-            if (string.IsNullOrEmpty(description))
+            if (string.IsNullOrWhiteSpace(description))
                 throw new ArgumentNullException("description");
             if (createdBy == null)
                 throw new ArgumentNullException("createdBy");
@@ -74,6 +75,7 @@ namespace STT.Model.Entity
             Priority = priority;
             Type = type;
             Project = project;
+
             Parent = parent;
             Children = new List<WorkItem>();
         }

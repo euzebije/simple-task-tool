@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using STT.Model.Entity;
 
-namespace STT.Model.Test
+namespace STT.Model.Test.Entity
 {
     [TestFixture]
     public class ProjectTest
@@ -12,14 +12,14 @@ namespace STT.Model.Test
         public void CreateEmptyProject()
         {
             var project = new Project();
-            Assert.IsNotNull(project);
+            Assert.That(project, Is.Not.Null);
         }
 
         [Test]
         public void ProjectInheritsBaseModel()
         {
             var project = new Project();
-            Assert.IsInstanceOf<EntityBase>(project);
+            Assert.That(project, Is.InstanceOf<EntityBase>());
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace STT.Model.Test
                                   Key = key
                               };
 
-            Assert.AreEqual(key, project.Key);
+            Assert.That(project.Key, Is.EqualTo(key));
         }
 
         [Test]
@@ -58,12 +58,12 @@ namespace STT.Model.Test
                                   WorkItems = workItems
                               };
 
-            Assert.AreNotEqual(Guid.Empty, project.Key);
-            Assert.AreEqual(name, project.Name);
-            Assert.AreEqual(description, project.Description);
-            Assert.AreEqual(createdOn, project.CreatedOn);
-            Assert.AreEqual(owner, project.Owner);
-            Assert.AreEqual(workItems, project.WorkItems);
+            Assert.That(project.Key, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(project.Name, Is.EqualTo(name));
+            Assert.That(project.Description, Is.EqualTo(description));
+            Assert.That(project.CreatedOn, Is.EqualTo(createdOn));
+            Assert.That(project.Owner, Is.EqualTo(owner));
+            Assert.That(project.WorkItems, Is.EqualTo(workItems));
         }
 
         [Test]
@@ -75,11 +75,11 @@ namespace STT.Model.Test
 
             var project = new Project(name, description, owner);
 
-            Assert.AreNotEqual(Guid.Empty, project.Key);
-            Assert.AreEqual(name, project.Name);
-            Assert.AreEqual(description, project.Description);
-            Assert.AreEqual(owner, project.Owner);
-            Assert.IsNotNull(project.WorkItems);
+            Assert.That(project.Key, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(project.Name, Is.EqualTo(name));
+            Assert.That(project.Description, Is.EqualTo(description));
+            Assert.That(project.Owner, Is.EqualTo(owner));
+            Assert.That(project.WorkItems, Is.Not.Null);
         }
     }
 }

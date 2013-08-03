@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using STT.Model.Entity;
 
-namespace STT.Model.Test
+namespace STT.Model.Test.Entity
 {
     [TestFixture]
     public class WorkItemTypeTest
@@ -11,14 +11,14 @@ namespace STT.Model.Test
         public void CreateEmptyWorkItemType()
         {
             var workItemType = new WorkItemType();
-            Assert.IsNotNull(workItemType);
+            Assert.That(workItemType, Is.Not.Null);
         }
 
         [Test]
         public void WorkItemTypeInheritsBaseModel()
         {
             var workItemType = new WorkItemType();
-            Assert.IsInstanceOf<EntityBase>(workItemType);
+            Assert.That(workItemType, Is.InstanceOf<EntityBase>());
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace STT.Model.Test
                                        Key = key
                                    };
 
-            Assert.AreEqual(key, workItemType.Key);
+            Assert.That(workItemType.Key, Is.EqualTo(key));
         }
 
         [Test]
@@ -46,9 +46,9 @@ namespace STT.Model.Test
                                        Description = description
                                    };
 
-            Assert.AreNotEqual(Guid.Empty, workItemType.Key);
-            Assert.AreEqual(name, workItemType.Name);
-            Assert.AreEqual(description, workItemType.Description);
+            Assert.That(workItemType.Key, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(workItemType.Name, Is.EqualTo(name));
+            Assert.That(workItemType.Description, Is.EqualTo(description));
         }
 
         [Test]
@@ -59,9 +59,9 @@ namespace STT.Model.Test
 
             var workItemType = new WorkItemType(name, description);
 
-            Assert.AreNotEqual(Guid.Empty, workItemType.Key);
-            Assert.AreEqual(name, workItemType.Name);
-            Assert.AreEqual(description, workItemType.Description);
+            Assert.That(workItemType.Key, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(workItemType.Name, Is.EqualTo(name));
+            Assert.That(workItemType.Description, Is.EqualTo(description));
         }
     }
 }

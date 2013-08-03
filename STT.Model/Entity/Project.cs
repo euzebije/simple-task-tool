@@ -17,9 +17,9 @@ namespace STT.Model.Entity
         }
         public Project(string name, string description, UserAccount owner)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException("name");
-            if (string.IsNullOrEmpty(description))
+            if (string.IsNullOrWhiteSpace(description))
                 throw new ArgumentNullException("description");
             if (owner == null)
                 throw new ArgumentNullException("owner");

@@ -45,11 +45,13 @@
     <Compile Include="Entity\UserAccount.cs" />
     <Compile Include="Entity\WorkItem.cs" />
     <Compile Include="Entity\WorkItemType.cs" />
+    <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Model.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

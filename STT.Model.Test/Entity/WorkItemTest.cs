@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using STT.Model.Entity;
 
-namespace STT.Model.Test
+namespace STT.Model.Test.Entity
 {
     [TestFixture]
     public class WorkItemTest
@@ -12,14 +12,14 @@ namespace STT.Model.Test
         public void CreateEmptyWorkItem()
         {
             var workItem = new WorkItem();
-            Assert.IsNotNull(workItem);
+            Assert.That(workItem, Is.Not.Null);
         }
 
         [Test]
         public void WorkItemInheritsBaseModel()
         {
             var userAccount = new WorkItem();
-            Assert.IsInstanceOf<EntityBase>(userAccount);
+            Assert.That(userAccount, Is.InstanceOf<EntityBase>());
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace STT.Model.Test
                 Key = key
             };
 
-            Assert.AreEqual(key, userAccount.Key);
+            Assert.That(userAccount.Key, Is.EqualTo(key));
         }
 
         [Test]
@@ -72,19 +72,19 @@ namespace STT.Model.Test
                                    Project = project
                                };
 
-            Assert.AreNotEqual(Guid.Empty, workItem.Key);
-            Assert.AreEqual(title, workItem.Title);
-            Assert.AreEqual(description, workItem.Description);
-            Assert.AreEqual(createdBy, workItem.CreatedBy);
-            Assert.AreEqual(createdOn, workItem.CreatedOn);
-            Assert.AreEqual(assignedTo, workItem.AssignedTo);
-            Assert.AreEqual(lastUpdate, workItem.LastUpdate);
-            Assert.AreEqual(priority, workItem.Priority);
-            Assert.AreEqual(type, workItem.Type);
-            Assert.AreEqual(parent, workItem.Parent);
-            Assert.AreEqual(children, workItem.Children);
-            Assert.AreEqual(isFinished, workItem.IsFinished);
-            Assert.AreEqual(project, workItem.Project);
+            Assert.That(workItem.Key, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(workItem.Title, Is.EqualTo(title));
+            Assert.That(workItem.Description, Is.EqualTo(description));
+            Assert.That(workItem.CreatedBy, Is.EqualTo(createdBy));
+            Assert.That(workItem.CreatedOn, Is.EqualTo(createdOn));
+            Assert.That(workItem.AssignedTo, Is.EqualTo(assignedTo));
+            Assert.That(workItem.LastUpdate, Is.EqualTo(lastUpdate));
+            Assert.That(workItem.Priority, Is.EqualTo(priority));
+            Assert.That(workItem.Type, Is.EqualTo(type));
+            Assert.That(workItem.Parent, Is.EqualTo(parent));
+            Assert.That(workItem.Children, Is.EqualTo(children));
+            Assert.That(workItem.IsFinished, Is.EqualTo(isFinished));
+            Assert.That(workItem.Project, Is.EqualTo(project));
         }
 
         [Test]
@@ -99,17 +99,17 @@ namespace STT.Model.Test
 
             var workItem = new WorkItem(title, description, createdBy, priority, type, project);
 
-            Assert.AreNotEqual(Guid.Empty, workItem.Key);
-            Assert.AreEqual(title, workItem.Title);
-            Assert.AreEqual(description, workItem.Description);
-            Assert.AreEqual(createdBy, workItem.CreatedBy);
-            Assert.AreEqual(null, workItem.AssignedTo);
-            Assert.AreEqual(priority, workItem.Priority);
-            Assert.AreEqual(type, workItem.Type);
-            Assert.AreEqual(null, workItem.Parent);
-            Assert.IsNotNull(workItem.Children);
-            Assert.AreEqual(false, workItem.IsFinished);
-            Assert.AreEqual(project, workItem.Project);
+            Assert.That(workItem.Key, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(workItem.Title, Is.EqualTo(title));
+            Assert.That(workItem.Description, Is.EqualTo(description));
+            Assert.That(workItem.CreatedBy, Is.EqualTo(createdBy));
+            Assert.That(workItem.AssignedTo, Is.Null);
+            Assert.That(workItem.Priority, Is.EqualTo(priority));
+            Assert.That(workItem.Type, Is.EqualTo(type));
+            Assert.That(workItem.Parent, Is.Null);
+            Assert.That(workItem.Children, Is.Not.Null);
+            Assert.That(workItem.IsFinished, Is.False);
+            Assert.That(workItem.Project, Is.EqualTo(project));
         }
 
         [Test]
@@ -125,17 +125,17 @@ namespace STT.Model.Test
 
             var workItem = new WorkItem(title, description, createdBy, priority, type, project, parent);
 
-            Assert.AreNotEqual(Guid.Empty, workItem.Key);
-            Assert.AreEqual(title, workItem.Title);
-            Assert.AreEqual(description, workItem.Description);
-            Assert.AreEqual(createdBy, workItem.CreatedBy);
-            Assert.AreEqual(null, workItem.AssignedTo);
-            Assert.AreEqual(priority, workItem.Priority);
-            Assert.AreEqual(type, workItem.Type);
-            Assert.AreEqual(parent, workItem.Parent);
-            Assert.IsNotNull(workItem.Children);
-            Assert.AreEqual(false, workItem.IsFinished);
-            Assert.AreEqual(project, workItem.Project);
+            Assert.That(workItem.Key, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(workItem.Title, Is.EqualTo(title));
+            Assert.That(workItem.Description, Is.EqualTo(description));
+            Assert.That(workItem.CreatedBy, Is.EqualTo(createdBy));
+            Assert.That(workItem.AssignedTo, Is.Null);
+            Assert.That(workItem.Priority, Is.EqualTo(priority));
+            Assert.That(workItem.Type, Is.EqualTo(type));
+            Assert.That(workItem.Parent, Is.EqualTo(parent));
+            Assert.That(workItem.Children, Is.Not.Null);
+            Assert.That(workItem.IsFinished, Is.False);
+            Assert.That(workItem.Project, Is.EqualTo(project));
         }
     }
 }

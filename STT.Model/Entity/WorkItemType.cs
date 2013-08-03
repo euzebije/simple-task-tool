@@ -10,9 +10,9 @@ namespace STT.Model.Entity
         public WorkItemType(){}
         public WorkItemType(string name, string description)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException("name");
-            if (string.IsNullOrEmpty(description))
+            if (string.IsNullOrWhiteSpace(description))
                 throw new ArgumentNullException("description");
 
             Name = name;
