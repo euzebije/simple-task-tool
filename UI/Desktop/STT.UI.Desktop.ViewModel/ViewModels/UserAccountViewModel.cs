@@ -1,12 +1,13 @@
 ﻿using System;
+using STT.Data;
 using STT.Model.Entity;
 
 namespace STT.UI.Desktop.ViewModel
 {
     public class UserAccountViewModel : ViewModelBase<UserAccount>
     {
-        public UserAccountViewModel(UserAccount model)
-            : base(model)
+        public UserAccountViewModel(UserAccount model, IRepositoryFactory repositoryFactory)
+            : base(model, repositoryFactory)
         {
         }
 

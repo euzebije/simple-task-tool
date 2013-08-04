@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCommand.cs" />
     <Compile Include="IProjectRepository.cs" />
     <Compile Include="IRepositoryBase.cs" />
     <Compile Include="IRepositoryFactory.cs" />

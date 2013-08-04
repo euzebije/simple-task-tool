@@ -16,12 +16,12 @@ namespace STT.Data.Memory
 
         public virtual IEnumerable<TModel> Get()
         {
-            return Items;
+            return Items.Where(x => !x.IsArchived);
         }
 
         public virtual TModel Find(Guid key)
         {
-            return Items.SingleOrDefault(x => x.Key == key);
+            return Get().SingleOrDefault(x => x.Key == key);
         }
 
         public virtual void Save(TModel model)

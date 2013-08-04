@@ -144,4 +144,28 @@
   <data name="WorkItemTypes" xml:space="preserve">
     <value>Work Item Types</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="EditWorkItemType" xml:space="preserve">
+    <value>Edit - {0}</value>
+  </data>
+  <data name="NewWorkItemType" xml:space="preserve">
+    <value>New Work Item Type</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>
