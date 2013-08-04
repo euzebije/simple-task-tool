@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="STT.Model.Entity.EntityBase">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\EntityBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STT.Model.Entity.UserAccount">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAACAAAAEQAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\UserAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STT.Model.Entity.Project">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAgAAAABAAAAAQAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Project.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Owner" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="WorkItems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="STT.Model.Entity.WorkItem">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAEAEAAAESAAQAAACAAAABQABAAAAAAE=</HashCode>
+      <FileName>Entity\WorkItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+      <Property Name="Project" />
+      <Property Name="Parent" />
+      <Property Name="CreatedBy" />
+      <Property Name="AssignedTo" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Children" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="STT.Model.Entity.WorkItemType">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\WorkItemType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="STT.Model.Entity.Priority">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Priority.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
