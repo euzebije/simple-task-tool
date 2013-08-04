@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
@@ -48,8 +49,12 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Prism.4.1.0.0\lib\NET40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -59,9 +64,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\VisualTreeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -72,8 +80,18 @@
     <Compile Include="Views\UserAccountListView.xaml.cs">
       <DependentUpon>UserAccountListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WorkItemTypeListView.xaml.cs">
+      <DependentUpon>WorkItemTypeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewEditWorkItemType.xaml.cs">
+      <DependentUpon>NewEditWorkItemType.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Data\STT.Data\STT.Data.csproj">
+      <Project>{4BB17672-45DC-42BA-AF95-901050520841}</Project>
+      <Name>STT.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Model\STT.Model\STT.Model.csproj">
       <Project>{23C2BE2F-1B7D-44FE-B390-E0450540A18B}</Project>
       <Name>STT.Model</Name>
@@ -97,6 +115,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserAccountListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkItemTypeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\NewEditWorkItemType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

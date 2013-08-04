@@ -50,7 +50,7 @@ namespace STT.UI.Desktop.ViewModel
         private void NewHandler()
         {
             var userAccount = new UserAccount();
-            var viewModel = new UserAccountViewModel(userAccount);
+            var viewModel = new UserAccountViewModel(userAccount, null);
 
             RaiseNewOrEditStarted(viewModel);
         }

@@ -1,12 +1,16 @@
-﻿using STT.Model.Entity;
+﻿using STT.Data;
+using STT.Model.Entity;
 
 namespace STT.UI.Desktop.ViewModel
 {
     public class WorkItemTypeViewModel : ViewModelBase<WorkItemType>
     {
-        public WorkItemTypeViewModel(WorkItemType model)
-            : base(model)
+        private readonly IWorkItemTypeRepository _repository;
+
+        public WorkItemTypeViewModel(WorkItemType model, IRepositoryFactory repositoryFactory)
+            : base(model, repositoryFactory)
         {
+            _repository = repositoryFactory.GetWorkItemTypeRepository();
         }
 
         public string Name

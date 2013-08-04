@@ -1,4 +1,5 @@
-﻿using STT.Model.Entity;
+﻿using STT.Data;
+using STT.Model.Entity;
 
 namespace STT.UI.Desktop.ViewModel
 {
@@ -23,6 +24,13 @@ namespace STT.UI.Desktop.ViewModel
             {
                 return LoggedInUser != null && LoggedInUser.IsPowerUser;
             }
+        }
+
+        public WorkItemTypeListViewModel WorkItemTypeList { get; private set; }
+
+        public MainViewModel(IRepositoryFactory repositoryFactory)
+        {
+            WorkItemTypeList = new WorkItemTypeListViewModel(repositoryFactory);
         }
     }
 }
