@@ -16,6 +16,11 @@ namespace STT.UI.Desktop.Common
             UnityContainer.RegisterType<TFrom, TTo>();
         }
 
+        public static void RegisterInstance<T>(object instance)
+        {
+            UnityContainer.RegisterInstance(typeof (T), instance);
+        }
+
         public static T Resolve<T>()
         {
             return UnityContainer.Resolve<T>();

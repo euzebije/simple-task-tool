@@ -52,6 +52,7 @@ namespace STT.UI.Desktop.ViewModel
 
                 ((DelegateCommand)EditCommand).RaiseCanExecuteChanged();
                 ((DelegateCommand)DeleteCommand).RaiseCanExecuteChanged();
+                OnSelectedItemChanged();
             }
         }
 
@@ -97,6 +98,10 @@ namespace STT.UI.Desktop.ViewModel
             var handler = NewOrEditStarted;
             if (handler != null)
                 handler(viewModel, dataCommand);
+        }
+
+        protected virtual void OnSelectedItemChanged()
+        {
         }
     }
 }

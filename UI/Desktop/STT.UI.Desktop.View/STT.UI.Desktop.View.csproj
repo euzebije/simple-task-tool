@@ -83,6 +83,12 @@
     <Compile Include="Views\WorkItemTypeListView.xaml.cs">
       <DependentUpon>WorkItemTypeListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ChangeUserAccountPassword.xaml.cs">
+      <DependentUpon>ChangeUserAccountPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewEditUserAccount.xaml.cs">
+      <DependentUpon>NewEditUserAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NewEditWorkItemType.xaml.cs">
       <DependentUpon>NewEditWorkItemType.xaml</DependentUpon>
     </Compile>
@@ -121,6 +127,14 @@
     <Page Include="Views\WorkItemTypeListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ChangeUserAccountPassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NewEditUserAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\NewEditWorkItemType.xaml">
       <SubType>Designer</SubType>

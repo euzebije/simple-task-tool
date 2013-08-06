@@ -13,7 +13,9 @@
             <TabItem Header="{x:Static common:Localization.WorkItemTypes}" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
                 <view:WorkItemTypeListView DataContext="{Binding WorkItemTypeList}"/>
             </TabItem>
-            <TabItem Header="{x:Static common:Localization.UserAccounts}" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}"></TabItem>
+            <TabItem Header="{x:Static common:Localization.UserAccounts}" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
+                <view:UserAccountListView DataContext="{Binding UserAccountList}"/>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

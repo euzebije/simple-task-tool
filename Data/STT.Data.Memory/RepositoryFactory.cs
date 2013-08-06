@@ -9,7 +9,7 @@ namespace STT.Data.Memory
         private IWorkItemTypeRepository _workItemTypeRepository;
         private IProjectRepository _projectRepository;
 
-        public RepositoryFactory()
+        public void CreateDefaultUserAccount()
         {
             // Create default user account
             var repo = GetUserAccountRepository();

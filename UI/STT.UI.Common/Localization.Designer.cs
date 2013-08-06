@@ -79,6 +79,33 @@ namespace STT.UI.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm password.
+        /// </summary>
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        public static string CreatedOn {
+            get {
+                return ResourceManager.GetString("CreatedOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
@@ -108,9 +135,45 @@ namespace STT.UI.Common {
         /// <summary>
         ///   Looks up a localized string similar to Edit - {0}.
         /// </summary>
+        public static string EditUserAccount {
+            get {
+                return ResourceManager.GetString("EditUserAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit - {0}.
+        /// </summary>
         public static string EditWorkItemType {
             get {
                 return ResourceManager.GetString("EditWorkItemType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is active.
+        /// </summary>
+        public static string IsActive {
+            get {
+                return ResourceManager.GetString("IsActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is admin.
+        /// </summary>
+        public static string IsPowerUser {
+            get {
+                return ResourceManager.GetString("IsPowerUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last login.
+        /// </summary>
+        public static string LastLogin {
+            get {
+                return ResourceManager.GetString("LastLogin", resourceCulture);
             }
         }
         
@@ -133,6 +196,24 @@ namespace STT.UI.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New User Account.
+        /// </summary>
+        public static string NewUserAccount {
+            get {
+                return ResourceManager.GetString("NewUserAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Work Item Type.
         /// </summary>
         public static string NewWorkItemType {
@@ -151,11 +232,56 @@ namespace STT.UI.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Old password.
+        /// </summary>
+        public static string OldPassword {
+            get {
+                return ResourceManager.GetString("OldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password cannot be empty..
+        /// </summary>
+        public static string Password_NewPasswordNull {
+            get {
+                return ResourceManager.GetString("Password_NewPasswordNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old password is invalid..
+        /// </summary>
+        public static string Password_OldPasswordInvalid {
+            get {
+                return ResourceManager.GetString("Password_OldPasswordInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old password cannot be empty..
+        /// </summary>
+        public static string Password_OldPasswordNull {
+            get {
+                return ResourceManager.GetString("Password_OldPasswordNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not match..
+        /// </summary>
+        public static string Password_PasswordDoesNotMatch {
+            get {
+                return ResourceManager.GetString("Password_PasswordDoesNotMatch", resourceCulture);
             }
         }
         

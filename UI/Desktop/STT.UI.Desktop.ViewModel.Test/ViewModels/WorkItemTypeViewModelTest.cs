@@ -40,18 +40,24 @@ namespace STT.UI.Desktop.ViewModel.Test
             var factory = new RepositoryFactory();
             var repo = factory.GetWorkItemTypeRepository();
 
-            var model = new WorkItemType("test", "description");
+            var model = new WorkItemType();
             var viewModel = new WorkItemTypeViewModel(model, factory);
             viewModel.ModelSaved += itemViewModel =>
                                         {
                                             eventSuccessful = true;
                                             Assert.That(itemViewModel, Is.Not.Null);
                                             Assert.That(itemViewModel, Is.EqualTo(viewModel));
-                                            Assert.That(repo.Find(model.Key), Is.Not.Null);
+
+                                            var fetchedModel = repo.Find(model.Key);
+                                            Assert.That(fetchedModel, Is.Not.Null);
+                                            Assert.That(fetchedModel.Name, Is.EqualTo("name"));
+                                            Assert.That(fetchedModel.Description, Is.EqualTo("description"));
                                         };
 
             Assert.That(repo.Find(model.Key), Is.Null);
 
+            viewModel.Name = "name";
+            viewModel.Description = "description";
             viewModel.Save();
 
             if (!eventSuccessful)

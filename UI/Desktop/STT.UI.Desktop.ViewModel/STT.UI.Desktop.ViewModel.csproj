@@ -79,6 +79,10 @@
       <Project>{23c2be2f-1b7d-44fe-b390-e0450540a18b}</Project>
       <Name>STT.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\STT.UI.Common\STT.UI.Common.csproj">
+      <Project>{d2afd2ff-97d4-490b-800d-d9d2ee233976}</Project>
+      <Name>STT.UI.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\STT.UI.Desktop.Common\STT.UI.Desktop.Common.csproj">
       <Project>{708cae92-3985-4326-88f4-19c871d3aed3}</Project>
       <Name>STT.UI.Desktop.Common</Name>

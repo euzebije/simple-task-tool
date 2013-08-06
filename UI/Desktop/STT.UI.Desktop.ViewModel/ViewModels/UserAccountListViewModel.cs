@@ -1,65 +1,74 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
+using STT.Data;
 using STT.Model.Entity;
 
 namespace STT.UI.Desktop.ViewModel
 {
-    public class UserAccountListViewModel : ViewModelBase
+    public class UserAccountListViewModel : ListViewModel<UserAccount, UserAccountViewModel>
     {
-        private ObservableCollection<UserAccountViewModel> _userAccounts;
+        private readonly IUserAccountRepository _repository;
 
-        private UserAccountViewModel _selectedUserAccount;
+        private DelegateCommand _changePasswordCommand;
 
-        private DelegateCommand _newCommand;
-        private DelegateCommand _editCommand;
-        //private DelegateCommand _
-
-        public UserAccountListViewModel()
+        public UserAccountListViewModel(IRepositoryFactory repositoryFactory)
+            : base(repositoryFactory)
         {
-            UserAccounts = new ObservableCollection<UserAccountViewModel>();
-        }
+            _repository = repositoryFactory.GetUserAccountRepository();
 
-        public ObservableCollection<UserAccountViewModel> UserAccounts
-        {
-            get { return _userAccounts; }
-            set
+            foreach (var item in _repository.Get())
             {
-                if (Equals(value, _userAccounts)) return;
-                _userAccounts = value;
-                RaisePropertyChanged(() => UserAccounts);
+                Items.Add(new UserAccountViewModel(item, repositoryFactory));
             }
         }
 
-        public UserAccountViewModel SelectedUserAccount
+        public ICommand ChangePasswordCommand
         {
-            get { return _selectedUserAccount; }
-            set
+            get
             {
-                if (Equals(value, _selectedUserAccount)) return;
-                _selectedUserAccount = value;
-                RaisePropertyChanged(() => SelectedUserAccount);
+                return _changePasswordCommand ??
+                       (_changePasswordCommand = new DelegateCommand(ChangePasswordHandler, CanChangePasswordHandler));
+            }
+        }
+        private void ChangePasswordHandler()
+        {
+            RaiseChangePasswordStarted(SelectedItem);
+        }
+        private bool CanChangePasswordHandler()
+        {
+            return SelectedItem != null;
+        }
+
+        public event Action<UserAccountViewModel> ChangePasswordStarted;
+
+        protected override void NewHandler()
+        {
+            var model = new UserAccount();
+            var viewModel = new UserAccountViewModel(model, RepositoryFactory);
+            viewModel.ModelSaved += ViewModelOnModelSaved;
+
+            RaiseNewOrEditStarted(viewModel, DataCommand.New);
+        }
+
+        private void ViewModelOnModelSaved(ViewModelBase<UserAccount> viewModelBase)
+        {
+            var viewModel = viewModelBase as UserAccountViewModel;
+            if (viewModel != null)
+            {
+                viewModel.ModelSaved -= ViewModelOnModelSaved;
+                Items.Add(viewModel);
             }
         }
 
-        public ICommand NewCommand
+        protected override void OnSelectedItemChanged()
         {
-            get { return _newCommand ?? (_newCommand = new DelegateCommand(NewHandler)); }
-        }
-        private void NewHandler()
-        {
-            var userAccount = new UserAccount();
-            var viewModel = new UserAccountViewModel(userAccount, null);
-
-            RaiseNewOrEditStarted(viewModel);
+            ((DelegateCommand)ChangePasswordCommand).RaiseCanExecuteChanged();
         }
 
-        public event Action<UserAccountViewModel> NewOrEditStarted;
-
-        private void RaiseNewOrEditStarted(UserAccountViewModel viewModel)
+        protected void RaiseChangePasswordStarted(UserAccountViewModel viewModel)
         {
-            var handler = NewOrEditStarted;
+            var handler = ChangePasswordStarted;
             if (handler != null)
                 handler(viewModel);
         }

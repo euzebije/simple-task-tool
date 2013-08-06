@@ -168,4 +168,46 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Password_NewPasswordNull" xml:space="preserve">
+    <value>New password cannot be empty.</value>
+  </data>
+  <data name="Password_OldPasswordNull" xml:space="preserve">
+    <value>Old password cannot be empty.</value>
+  </data>
+  <data name="Password_PasswordDoesNotMatch" xml:space="preserve">
+    <value>Passwords do not match.</value>
+  </data>
+  <data name="Password_OldPasswordInvalid" xml:space="preserve">
+    <value>Old password is invalid.</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Is active</value>
+  </data>
+  <data name="IsPowerUser" xml:space="preserve">
+    <value>Is admin</value>
+  </data>
+  <data name="LastLogin" xml:space="preserve">
+    <value>Last login</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="EditUserAccount" xml:space="preserve">
+    <value>Edit - {0}</value>
+  </data>
+  <data name="NewUserAccount" xml:space="preserve">
+    <value>New User Account</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Old password</value>
+  </data>
 </root>

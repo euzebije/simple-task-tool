@@ -27,10 +27,12 @@ namespace STT.UI.Desktop.ViewModel
         }
 
         public WorkItemTypeListViewModel WorkItemTypeList { get; private set; }
+        public UserAccountListViewModel UserAccountList { get; private set; }
 
         public MainViewModel(IRepositoryFactory repositoryFactory)
         {
             WorkItemTypeList = new WorkItemTypeListViewModel(repositoryFactory);
+            UserAccountList = new UserAccountListViewModel(repositoryFactory);
         }
     }
 }

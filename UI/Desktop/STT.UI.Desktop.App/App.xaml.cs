@@ -16,7 +16,10 @@ namespace STT.UI.Desktop.App
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            Container.RegisterType<IRepositoryFactory, RepositoryFactory>();
+            var factory = new RepositoryFactory();
+            factory.CreateDefaultUserAccount();
+            Container.RegisterInstance<IRepositoryFactory>(factory);
+
             Container.RegisterType<MainViewModel>();
             Container.RegisterType<LoginViewModel>();
 
