@@ -35,6 +35,7 @@ namespace STT.UI.Desktop.View
 
         private void CancelClick(object sender, RoutedEventArgs e)
         {
+            _viewModel.Cancel();
             Close();
         }
     }

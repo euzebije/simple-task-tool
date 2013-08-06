@@ -39,5 +39,20 @@ namespace STT.UI.Desktop.ViewModel
         {
             get { return Model.IsPowerUser; }
         }
+
+        protected override void StartEditMode()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void SubmitEdit()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void RevertEdit()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

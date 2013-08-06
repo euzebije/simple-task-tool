@@ -11,6 +11,8 @@ namespace STT.UI.Desktop.ViewModel
 
     public abstract class ViewModelBase<TModel> : ViewModelBase where TModel: EntityBase
     {
+        private bool _isInEditMode;
+
         protected TModel Model { get; private set; }
         protected IRepositoryFactory RepositoryFactory { get; private set; }
 
@@ -26,12 +28,28 @@ namespace STT.UI.Desktop.ViewModel
         }
 
         public event Action<ViewModelBase<TModel>> ModelSaved;
-        public event Action<ViewModelBase<TModel>> ModelDeleted; 
+        public event Action<ViewModelBase<TModel>> ModelDeleted;
+
+        public bool IsInEditMode
+        {
+            get { return _isInEditMode; }
+            set
+            {
+                if (value.Equals(_isInEditMode)) return;
+                _isInEditMode = value;
+                RaisePropertyChanged(() => IsInEditMode);
+
+                if (IsInEditMode)
+                    StartEditMode();
+            }
+        }
 
         public virtual void Save()
         {
             var repo = RepositoryFactory.GetRepository<TModel>();
             repo.Save(Model);
+            SubmitEdit();
+            IsInEditMode = false;
             RaiseModelSaved();
         }
         public virtual void Delete()
@@ -40,6 +58,15 @@ namespace STT.UI.Desktop.ViewModel
             repo.Delete(Model);
             RaiseModelDeleted();
         }
+        public virtual void Cancel()
+        {
+            RevertEdit();
+            IsInEditMode = false;
+        }
+
+        protected abstract void StartEditMode();
+        protected abstract void SubmitEdit();
+        protected abstract void RevertEdit();
 
         protected void RaiseModelSaved()
         {

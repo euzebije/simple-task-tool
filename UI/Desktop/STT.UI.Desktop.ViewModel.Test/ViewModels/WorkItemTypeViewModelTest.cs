@@ -75,18 +75,42 @@ namespace STT.UI.Desktop.ViewModel.Test
                                             eventSuccessful = true;
                                             Assert.That(itemViewModel, Is.Not.Null);
                                             Assert.That(itemViewModel, Is.EqualTo(viewModel));
+                                            Assert.That(itemViewModel.IsInEditMode, Is.False);
 
                                             var item = repo.Find(model.Key);
                                             Assert.That(item.Name, Is.EqualTo("test2"));
                                             Assert.That(item.Description, Is.EqualTo("description2"));
                                         };
 
+            viewModel.IsInEditMode = true;
             viewModel.Name = "test2";
             viewModel.Description = "description2";
             viewModel.Save();
 
             if (!eventSuccessful)
                 Assert.Fail();
+        }
+
+        [Test]
+        public void WorkItemTypeViewModelCancelEdit()
+        {
+            var factory = new RepositoryFactory();
+            var repo = factory.GetWorkItemTypeRepository();
+
+            var model = new WorkItemType("test", "description");
+            repo.Save(model);
+
+            var viewModel = new WorkItemTypeViewModel(model, factory);
+            viewModel.ModelSaved += itemViewModel => Assert.Fail();
+
+            viewModel.IsInEditMode = true;
+            viewModel.Name = "test2";
+            viewModel.Description = "description2";
+            viewModel.Cancel();
+
+            Assert.That(viewModel.IsInEditMode, Is.False);
+            Assert.That(viewModel.Name, Is.EqualTo("test"));
+            Assert.That(viewModel.Description, Is.EqualTo("description"));
         }
     }
 }

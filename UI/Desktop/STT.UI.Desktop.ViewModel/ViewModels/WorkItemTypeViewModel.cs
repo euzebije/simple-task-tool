@@ -5,12 +5,12 @@ namespace STT.UI.Desktop.ViewModel
 {
     public class WorkItemTypeViewModel : ViewModelBase<WorkItemType>
     {
-        private readonly IWorkItemTypeRepository _repository;
+        private string _backupName;
+        private string _backupDescription;
 
         public WorkItemTypeViewModel(WorkItemType model, IRepositoryFactory repositoryFactory)
             : base(model, repositoryFactory)
         {
-            _repository = repositoryFactory.GetWorkItemTypeRepository();
         }
 
         public string Name
@@ -36,6 +36,24 @@ namespace STT.UI.Desktop.ViewModel
                     RaisePropertyChanged(() => Description);
                 }
             }
+        }
+
+        protected override void StartEditMode()
+        {
+            _backupName = Name;
+            _backupDescription = Description;
+        }
+
+        protected override void SubmitEdit()
+        {
+            _backupName = null;
+            _backupDescription = null;
+        }
+
+        protected override void RevertEdit()
+        {
+            Name = _backupName;
+            Description = _backupDescription;
         }
     }
 }
