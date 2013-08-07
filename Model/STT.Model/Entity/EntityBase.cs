@@ -12,12 +12,19 @@ namespace STT.Model.Entity
             Key = Guid.NewGuid();
         }
 
-        public bool IsEqualTo(EntityBase entity)
+        public override int GetHashCode()
         {
-            if (entity == null)
-                return false;
+            return Key.GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            var entity = obj as EntityBase;
+            if (entity != null)
+            {
+                return GetHashCode() == entity.GetHashCode();
+            }
 
-            return Key == entity.Key;
+            return false;
         }
     }
 }

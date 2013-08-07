@@ -35,8 +35,7 @@ namespace STT.Data.File.Test
             Assert.That(repository.Find(project.Key), Is.Null);
 
             repository.Save(project);
-            var savedModel = repository.Find(project.Key);
-            Assert.That(savedModel.IsEqualTo(project), Is.True);
+            Assert.That(repository.Find(project.Key), Is.EqualTo(project));
         }
 
         [Test]
@@ -80,10 +79,8 @@ namespace STT.Data.File.Test
             repository.Save(project1);
             repository.Save(project2);
 
-            var savedModel1 = repository.Find(project1.Key);
-            var savedModel2 = repository.Find(project2.Key);
-            Assert.That(savedModel1.IsEqualTo(project1), Is.True);
-            Assert.That(savedModel2.IsEqualTo(project2), Is.True);
+            Assert.That(repository.Find(project1.Key), Is.EqualTo(project1));
+            Assert.That(repository.Find(project2.Key), Is.EqualTo(project2));
         }
 
         [Test]
@@ -110,9 +107,9 @@ namespace STT.Data.File.Test
             var savedItem = repository.Find(project.Key);
             var workItems = savedItem.WorkItems.ToList();
 
-            Assert.That(workItems.Single(x => x.IsEqualTo(workItem1)), Is.Not.Null);
-            Assert.That(workItems.Single(x => x.IsEqualTo(workItem2)), Is.Not.Null);
-            Assert.That(workItems.Single(x => x.IsEqualTo(workItem3)), Is.Not.Null);
+            Assert.That(workItems, Contains.Item(workItem1));
+            Assert.That(workItems, Contains.Item(workItem2));
+            Assert.That(workItems, Contains.Item(workItem3));
         }
 
         [Test]
@@ -135,8 +132,7 @@ namespace STT.Data.File.Test
             var savedItems = repository.Get().ToList();
             foreach (var item in items)
             {
-                var savedItem = savedItems.SingleOrDefault(x => x.Key == item.Key);
-                Assert.That(savedItem, Is.Not.Null);
+                Assert.That(savedItems, Contains.Item(item));
             }
         }
 
@@ -176,7 +172,7 @@ namespace STT.Data.File.Test
                     var workItems = savedItem.WorkItems.ToList();
                     foreach (var child in item.WorkItems)
                     {
-                        Assert.That(workItems.Single(x => x.IsEqualTo(child)), Is.Not.Null);
+                        Assert.That(workItems, Contains.Item(child));
                     }
                 }
             }

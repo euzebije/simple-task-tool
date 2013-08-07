@@ -25,43 +25,42 @@ namespace STT.Data.File.Test
         public void InsertItem()
         {
             var repository = GetRepository();
-            var workItemType = new WorkItem();
+            var workItem = new WorkItem();
 
-            Assert.That(repository.Find(workItemType.Key), Is.Null);
+            Assert.That(repository.Find(workItem.Key), Is.Null);
 
-            repository.Save(workItemType);
-            var savedModel = repository.Find(workItemType.Key);
-            Assert.That(savedModel.IsEqualTo(workItemType), Is.True);
+            repository.Save(workItem);
+            Assert.That(repository.Find(workItem.Key), Is.EqualTo(workItem));
         }
 
         [Test]
         public void UpdateItem()
         {
             var repository = GetRepository();
-            var workItemType = new WorkItem();
-            repository.Save(workItemType);
+            var workItem = new WorkItem();
+            repository.Save(workItem);
 
-            var savedModel = repository.Find(workItemType.Key);
-            Assert.That(savedModel.Title, Is.EqualTo(workItemType.Title));
+            var savedModel = repository.Find(workItem.Key);
+            Assert.That(savedModel.Title, Is.EqualTo(workItem.Title));
 
-            workItemType.Title = "test";
-            repository.Save(workItemType);
+            workItem.Title = "test";
+            repository.Save(workItem);
 
-            savedModel = repository.Find(workItemType.Key);
-            Assert.That(savedModel.Title, Is.EqualTo(workItemType.Title));
+            savedModel = repository.Find(workItem.Key);
+            Assert.That(savedModel.Title, Is.EqualTo(workItem.Title));
         }
 
         [Test]
         public void DeleteItem()
         {
             var repository = GetRepository();
-            var workItemType = new WorkItem();
-            repository.Save(workItemType);
+            var workItem = new WorkItem();
+            repository.Save(workItem);
 
-            Assert.That(repository.Find(workItemType.Key), Is.Not.Null);
+            Assert.That(repository.Find(workItem.Key), Is.Not.Null);
 
-            repository.Delete(workItemType);
-            Assert.That(repository.Find(workItemType.Key), Is.Null);
+            repository.Delete(workItem);
+            Assert.That(repository.Find(workItem.Key), Is.Null);
         }
 
         [Test]
@@ -75,10 +74,8 @@ namespace STT.Data.File.Test
             repository.Save(workItem1);
             repository.Save(workItem2);
 
-            var savedModel1 = repository.Find(workItem1.Key);
-            var savedModel2 = repository.Find(workItem2.Key);
-            Assert.That(savedModel1.IsEqualTo(workItem1), Is.True);
-            Assert.That(savedModel2.IsEqualTo(workItem2), Is.True);
+            Assert.That(repository.Find(workItem1.Key), Is.EqualTo(workItem1));
+            Assert.That(repository.Find(workItem2.Key), Is.EqualTo(workItem2));
         }
 
         [Test]
@@ -101,8 +98,7 @@ namespace STT.Data.File.Test
             var savedItems = repository.Get().ToList();
             foreach (var item in items)
             {
-                var savedItem = savedItems.SingleOrDefault(x => x.Key == item.Key);
-                Assert.That(savedItem, Is.Not.Null);
+                Assert.That(savedItems, Contains.Item(item));
             }
         }
     }

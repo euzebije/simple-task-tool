@@ -25,43 +25,42 @@ namespace STT.Data.File.Test
         public void InsertItem()
         {
             var repository = GetRepository();
-            var workItemType = new UserAccount();
+            var userAccount = new UserAccount();
 
-            Assert.That(repository.Find(workItemType.Key), Is.Null);
+            Assert.That(repository.Find(userAccount.Key), Is.Null);
 
-            repository.Save(workItemType);
-            var savedModel = repository.Find(workItemType.Key);
-            Assert.That(savedModel.IsEqualTo(workItemType), Is.True);
+            repository.Save(userAccount);
+            Assert.That(repository.Find(userAccount.Key), Is.EqualTo(userAccount));
         }
 
         [Test]
         public void UpdateItem()
         {
             var repository = GetRepository();
-            var workItemType = new UserAccount();
-            repository.Save(workItemType);
+            var userAccount = new UserAccount();
+            repository.Save(userAccount);
 
-            var savedModel = repository.Find(workItemType.Key);
-            Assert.That(savedModel.Username, Is.EqualTo(workItemType.Username));
+            var savedModel = repository.Find(userAccount.Key);
+            Assert.That(savedModel.Username, Is.EqualTo(userAccount.Username));
 
-            workItemType.Username = "test";
-            repository.Save(workItemType);
+            userAccount.Username = "test";
+            repository.Save(userAccount);
 
-            savedModel = repository.Find(workItemType.Key);
-            Assert.That(savedModel.Username, Is.EqualTo(workItemType.Username));
+            savedModel = repository.Find(userAccount.Key);
+            Assert.That(savedModel.Username, Is.EqualTo(userAccount.Username));
         }
 
         [Test]
         public void DeleteItem()
         {
             var repository = GetRepository();
-            var workItemType = new UserAccount();
-            repository.Save(workItemType);
+            var userAccount = new UserAccount();
+            repository.Save(userAccount);
 
-            Assert.That(repository.Find(workItemType.Key), Is.Not.Null);
+            Assert.That(repository.Find(userAccount.Key), Is.Not.Null);
 
-            repository.Delete(workItemType);
-            Assert.That(repository.Find(workItemType.Key), Is.Null);
+            repository.Delete(userAccount);
+            Assert.That(repository.Find(userAccount.Key), Is.Null);
         }
 
         [Test]
@@ -75,10 +74,8 @@ namespace STT.Data.File.Test
             repository.Save(userAccount1);
             repository.Save(userAccount2);
 
-            var savedModel1 = repository.Find(userAccount1.Key);
-            var savedModel2 = repository.Find(userAccount2.Key);
-            Assert.That(savedModel1.IsEqualTo(userAccount1), Is.True);
-            Assert.That(savedModel2.IsEqualTo(userAccount2), Is.True);
+            Assert.That(repository.Find(userAccount1.Key), Is.EqualTo(userAccount1));
+            Assert.That(repository.Find(userAccount2.Key), Is.EqualTo(userAccount2));
         }
 
         [Test]
@@ -101,8 +98,7 @@ namespace STT.Data.File.Test
             var savedItems = repository.Get().ToList();
             foreach (var item in items)
             {
-                var savedItem = savedItems.SingleOrDefault(x => x.Key == item.Key);
-                Assert.That(savedItem, Is.Not.Null);
+                Assert.That(savedItems, Contains.Item(item));
             }
         }
     }

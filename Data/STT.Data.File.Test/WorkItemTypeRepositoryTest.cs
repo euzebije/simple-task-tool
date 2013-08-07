@@ -31,7 +31,7 @@ namespace STT.Data.File.Test
 
             repository.Save(workItemType);
             var savedModel = repository.Find(workItemType.Key);
-            Assert.That(savedModel.IsEqualTo(workItemType), Is.True);
+            Assert.That(savedModel, Is.EqualTo(workItemType));
         }
 
         [Test]
@@ -75,10 +75,8 @@ namespace STT.Data.File.Test
             repository.Save(workItemType1);
             repository.Save(workItemType2);
 
-            var savedModel1 = repository.Find(workItemType1.Key);
-            var savedModel2 = repository.Find(workItemType2.Key);
-            Assert.That(savedModel1.IsEqualTo(workItemType1), Is.True);
-            Assert.That(savedModel2.IsEqualTo(workItemType2), Is.True);
+            Assert.That(repository.Find(workItemType1.Key), Is.EqualTo(workItemType1));
+            Assert.That(repository.Find(workItemType2.Key), Is.EqualTo(workItemType2));
         }
 
         [Test]
@@ -101,8 +99,7 @@ namespace STT.Data.File.Test
             var savedItems = repository.Get().ToList();
             foreach (var item in items)
             {
-                var savedItem = savedItems.SingleOrDefault(x => x.Key == item.Key);
-                Assert.That(savedItem, Is.Not.Null);
+                Assert.That(savedItems, Contains.Item(item));
             }
         }
     }
