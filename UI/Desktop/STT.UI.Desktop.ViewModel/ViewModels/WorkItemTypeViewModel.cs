@@ -1,5 +1,6 @@
 ﻿using STT.Data;
 using STT.Model.Entity;
+using STT.UI.Common;
 
 namespace STT.UI.Desktop.ViewModel
 {
@@ -54,6 +55,18 @@ namespace STT.UI.Desktop.ViewModel
         {
             Name = _backupName;
             Description = _backupDescription;
+        }
+
+        protected override bool Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                ValidationMessage = string.Format(Localization.ValidationRequired, Localization.Name);
+                return false;
+            }
+
+            ValidationMessage = null;
+            return true;
         }
     }
 }

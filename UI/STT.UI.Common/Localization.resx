@@ -219,4 +219,7 @@
   <data name="NewProject" xml:space="preserve">
     <value>New Project</value>
   </data>
+  <data name="ValidationRequired" xml:space="preserve">
+    <value>Field '{0}' is required.</value>
+  </data>
 </root>

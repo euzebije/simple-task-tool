@@ -4,11 +4,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:common="clr-namespace:STT.UI.Common;assembly=STT.UI.Common" 
-        Width="300" Height="150" ResizeMode="NoResize"
+        Width="300" Height="165" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner" WindowStyle="SingleBorderWindow"
         mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="3">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -24,8 +25,11 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Margin="2" HorizontalAlignment="Right" Text="{x:Static common:Localization.Description}"/>
         <TextBox Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Left" Width="150" Text="{Binding Description}"
                  TextWrapping="Wrap" AcceptsReturn="True" Height="50" VerticalScrollBarVisibility="Auto"/>
-        
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Foreground="Red"
+                   Text="{Binding ValidationMessage}"/>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
             <Button Margin="2" Width="75" Content="{x:Static common:Localization.Save}" IsDefault="True" Click="SaveClick"/>
             <Button Margin="2" Width="75" Content="{x:Static common:Localization.Cancel}" IsCancel="True" Click="CancelClick"/>
         </StackPanel>

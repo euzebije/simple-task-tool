@@ -30,7 +30,8 @@ namespace STT.UI.Desktop.View
         private void SaveClick(object sender, RoutedEventArgs e)
         {
             _viewModel.Save();
-            Close();
+            if (_viewModel.IsValid)
+                Close();
         }
 
         private void CancelClick(object sender, RoutedEventArgs e)

@@ -12,6 +12,8 @@ namespace STT.UI.Desktop.ViewModel
     public abstract class ViewModelBase<TModel> : ViewModelBase where TModel: EntityBase
     {
         private bool _isInEditMode;
+        private bool _isValid;
+        private string _validationMessage;
 
         protected TModel Model { get; private set; }
         protected IRepositoryFactory RepositoryFactory { get; private set; }
@@ -44,8 +46,33 @@ namespace STT.UI.Desktop.ViewModel
             }
         }
 
+        public bool IsValid
+        {
+            get { return _isValid; }
+            set
+            {
+                if (value.Equals(_isValid)) return;
+                _isValid = value;
+                RaisePropertyChanged(() => IsValid);
+            }
+        }
+        public string ValidationMessage
+        {
+            get { return _validationMessage; }
+            protected set
+            {
+                if (value == _validationMessage) return;
+                _validationMessage = value;
+                RaisePropertyChanged(() => ValidationMessage);
+            }
+        }
+
         public virtual void Save()
         {
+            IsValid = Validate();
+            if (!IsValid)
+                return;
+
             var repo = RepositoryFactory.GetRepository<TModel>();
             repo.Save(Model);
             SubmitEdit();
@@ -67,6 +94,8 @@ namespace STT.UI.Desktop.ViewModel
         protected abstract void StartEditMode();
         protected abstract void SubmitEdit();
         protected abstract void RevertEdit();
+
+        protected abstract bool Validate();
 
         protected void RaiseModelSaved()
         {

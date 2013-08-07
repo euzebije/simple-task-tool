@@ -118,5 +118,25 @@ namespace STT.UI.Desktop.ViewModel.Test
             Assert.That(viewModel.Name, Is.EqualTo("test"));
             Assert.That(viewModel.Description, Is.EqualTo("description"));
         }
+
+        [Test]
+        public void WorkItemTypeViewModelSaveValidation()
+        {
+            var factory = new RepositoryFactory();
+            var repo = factory.GetWorkItemTypeRepository();
+
+            Assert.That(repo.Get(), Is.Empty);
+
+            var viewModel = new WorkItemTypeViewModel(new WorkItemType(), factory);
+
+            Assert.That(viewModel.IsValid, Is.False);
+            viewModel.Save();
+            Assert.That(repo.Get(), Is.Empty);
+
+            viewModel.Name = "test";
+            viewModel.Save();
+            Assert.That(viewModel.IsValid, Is.True);
+            Assert.That(repo.Get(), Is.Not.Empty);
+        }
     }
 }

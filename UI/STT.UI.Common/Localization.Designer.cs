@@ -349,6 +349,15 @@ namespace STT.UI.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Field &apos;{0}&apos; is required..
+        /// </summary>
+        public static string ValidationRequired {
+            get {
+                return ResourceManager.GetString("ValidationRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Work Items.
         /// </summary>
         public static string WorkItems {

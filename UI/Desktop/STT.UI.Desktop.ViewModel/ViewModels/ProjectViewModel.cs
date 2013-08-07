@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using STT.Data;
 using STT.Model.Entity;
+using STT.UI.Common;
 
 namespace STT.UI.Desktop.ViewModel
 {
@@ -49,7 +50,7 @@ namespace STT.UI.Desktop.ViewModel
             get { return Model.Owner; }
             set
             {
-                if (Model.Owner != value)
+                if (!Equals(Model.Owner, value))
                 {
                     Model.Owner = value;
                     RaisePropertyChanged(() => Owner);
@@ -85,6 +86,24 @@ namespace STT.UI.Desktop.ViewModel
             Name = _backupName;
             Description = _backupDescription;
             Owner = _backupOwner;
+        }
+
+        protected override bool Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                ValidationMessage = string.Format(Localization.ValidationRequired, Localization.Name);
+                return false;
+            }
+            
+            if (Owner == null)
+            {
+                ValidationMessage = string.Format(Localization.ValidationRequired, Localization.Owner);
+                return false;
+            }
+
+            ValidationMessage = null;
+            return true;
         }
     }
 }

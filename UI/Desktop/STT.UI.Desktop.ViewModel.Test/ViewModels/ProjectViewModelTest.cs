@@ -128,5 +128,30 @@ namespace STT.UI.Desktop.ViewModel.Test
             Assert.That(viewModel.Description, Is.EqualTo("description"));
             Assert.That(viewModel.Owner, Is.EqualTo(owner));
         }
+
+        [Test]
+        public void ProjectViewModelSaveValidation()
+        {
+            var factory = new RepositoryFactory();
+            var repo = factory.GetProjectRepository();
+
+            Assert.That(repo.Get(), Is.Empty);
+
+            var viewModel = new ProjectViewModel(new Project(), factory);
+
+            Assert.That(viewModel.IsValid, Is.False);
+            viewModel.Save();
+            Assert.That(repo.Get(), Is.Empty);
+
+            viewModel.Name = "test";
+            viewModel.Save();
+            Assert.That(viewModel.IsValid, Is.False);
+            Assert.That(repo.Get(), Is.Empty);
+
+            viewModel.Owner = new UserAccount();
+            viewModel.Save();
+            Assert.That(viewModel.IsValid, Is.True);
+            Assert.That(repo.Get(), Is.Not.Empty);
+        }
     }
 }

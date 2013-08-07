@@ -168,5 +168,30 @@ namespace STT.UI.Desktop.ViewModel.Test
             if (!eventSuccessful)
                 Assert.Fail();
         }
+
+        [Test]
+        public void UserAccountViewModelSaveValidation()
+        {
+            var factory = new RepositoryFactory();
+            var repo = factory.GetUserAccountRepository();
+
+            Assert.That(repo.Get(), Is.Empty);
+
+            var viewModel = new UserAccountViewModel(new UserAccount(), factory);
+
+            Assert.That(viewModel.IsValid, Is.False);
+            viewModel.Save();
+            Assert.That(repo.Get(), Is.Empty);
+
+            viewModel.Username = "test";
+            viewModel.Save();
+            Assert.That(viewModel.IsValid, Is.False);
+            Assert.That(repo.Get(), Is.Empty);
+
+            viewModel.Password = "password";
+            viewModel.Save();
+            Assert.That(viewModel.IsValid, Is.True);
+            Assert.That(repo.Get(), Is.Not.Empty);
+        }
     }
 }

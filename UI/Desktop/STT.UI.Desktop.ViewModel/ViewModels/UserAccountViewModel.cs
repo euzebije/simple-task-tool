@@ -123,7 +123,7 @@ namespace STT.UI.Desktop.ViewModel
 
         public override void Save()
         {
-            if (Model.IsPasswordValid("temp"))
+            if (Model.IsPasswordValid("temp") && !string.IsNullOrWhiteSpace(Password))
                 Model.ChangePassword("temp", Password);
 
             base.Save();
@@ -145,6 +145,24 @@ namespace STT.UI.Desktop.ViewModel
         {
             Username = _backupUsername;
             IsActive = _backupIsActive;
+        }
+
+        protected override bool Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Username))
+            {
+                ValidationMessage = string.Format(Localization.ValidationRequired, Localization.Username);
+                return false;
+            }
+
+            if (Model.IsPasswordValid("temp") && string.IsNullOrWhiteSpace(Password))
+            {
+                ValidationMessage = string.Format(Localization.ValidationRequired, Localization.Password);
+                return false;
+            }
+
+            ValidationMessage = null;
+            return true;
         }
 
         public void ChangePassword()
