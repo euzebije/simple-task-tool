@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using STT.Data;
 using STT.UI.Desktop.ViewModel;
 
@@ -23,8 +24,20 @@ namespace STT.UI.Desktop.View
             Title = dataCommand == DataCommand.New
                         ? Common.Localization.NewUserAccount
                         : string.Format(Common.Localization.EditUserAccount, viewModel.Username);
+            if (dataCommand == DataCommand.Edit)
+            {
+                PasswordBlock.IsEnabled = false;
+                PasswordText.IsEnabled = false;
+            }
 
             UsernameText.Focus();
+        }
+
+        private void OnPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            var passwordBox = sender as PasswordBox;
+            if (passwordBox != null)
+                _viewModel.Password = passwordBox.Password;
         }
 
         private void SaveClick(object sender, RoutedEventArgs e)

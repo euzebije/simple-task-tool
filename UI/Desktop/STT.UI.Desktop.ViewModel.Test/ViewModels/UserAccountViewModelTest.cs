@@ -61,7 +61,7 @@ namespace STT.UI.Desktop.ViewModel.Test
             Assert.That(repo.Find(model.Key), Is.Null);
 
             viewModel.Username = "test";
-            //viewModel.Password = "password";
+            viewModel.Password = "password";
             viewModel.IsActive = true;
             viewModel.Save();
 

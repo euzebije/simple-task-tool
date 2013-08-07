@@ -46,6 +46,7 @@ namespace STT.UI.Desktop.ViewModel.Test
                                                   eventSuccessful = true;
                                                   Assert.That(itemViewModel, Is.Not.Null);
                                                   Assert.That(dataCommand, Is.EqualTo(DataCommand.New));
+                                                  itemViewModel.Password = "password";
                                                   itemViewModel.Save();
                                                   Assert.That(viewModel.Items, Is.Not.Empty);
                                               };

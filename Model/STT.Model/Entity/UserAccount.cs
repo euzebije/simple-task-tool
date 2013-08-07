@@ -16,6 +16,10 @@ namespace STT.Model.Entity
 
         public UserAccount()
         {
+            // Default password "temp"
+            PasswordSalt = PasswordHelper.GenerateSalt();
+            Password = PasswordHelper.EncodePassword("temp", PasswordSalt);
+
             var now = DateTime.Now;
             CreatedOn = now;
             LastLogin = now;

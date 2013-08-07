@@ -4,11 +4,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:common="clr-namespace:STT.UI.Common;assembly=STT.UI.Common" 
-        Width="300" Height="115" ResizeMode="NoResize"
+        Width="300" Height="135" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner" WindowStyle="SingleBorderWindow"
         mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="3">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -21,10 +22,13 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Margin="2" HorizontalAlignment="Right" Text="{x:Static common:Localization.Username}"/>
         <TextBox x:Name="UsernameText" Grid.Row="0" Grid.Column="1" Margin="2" HorizontalAlignment="Left" Width="150" Text="{Binding Username}"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Margin="2" HorizontalAlignment="Right" Text="{x:Static common:Localization.IsActive}"/>
-        <CheckBox Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Left" IsChecked="{Binding IsActive}"/>
+        <TextBlock x:Name="PasswordBlock" Grid.Row="1" Grid.Column="0" Margin="2" HorizontalAlignment="Right" Text="{x:Static common:Localization.Password}"/>
+        <PasswordBox x:Name="PasswordText" Grid.Row="1" Grid.Column="1" Margin="2" HorizontalAlignment="Left" Width="150" PasswordChanged="OnPasswordChanged"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="2" HorizontalAlignment="Right" Text="{x:Static common:Localization.IsActive}"/>
+        <CheckBox Grid.Row="2" Grid.Column="1" Margin="2" HorizontalAlignment="Left" IsChecked="{Binding IsActive}"/>
         
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
             <Button Margin="2" Width="75" Content="{x:Static common:Localization.Save}" IsDefault="True" Click="SaveClick"/>
             <Button Margin="2" Width="75" Content="{x:Static common:Localization.Cancel}" IsCancel="True" Click="CancelClick"/>
         </StackPanel>

@@ -16,6 +16,8 @@ namespace STT.UI.Desktop.ViewModel
         private string _passwordChangeMessage;
         private bool _isPasswordChangeError;
 
+        private string _password;
+
         public UserAccountViewModel(UserAccount model, IRepositoryFactory repositoryFactory)
             : base(model, repositoryFactory)
         {
@@ -30,6 +32,16 @@ namespace STT.UI.Desktop.ViewModel
                     Model.Username = value;
                     RaisePropertyChanged(() => Username);
                 }
+            }
+        }
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                if (value == _password) return;
+                _password = value;
+                RaisePropertyChanged(() => Password);
             }
         }
         public DateTime CreatedOn
@@ -107,6 +119,14 @@ namespace STT.UI.Desktop.ViewModel
                 _passwordChangeMessage = value;
                 RaisePropertyChanged(() => PasswordChangeMessage);
             }
+        }
+
+        public override void Save()
+        {
+            if (Model.IsPasswordValid("temp"))
+                Model.ChangePassword("temp", Password);
+
+            base.Save();
         }
 
         protected override void StartEditMode()
