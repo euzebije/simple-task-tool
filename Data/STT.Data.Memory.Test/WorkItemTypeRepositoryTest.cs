@@ -40,14 +40,14 @@ namespace STT.Data.Memory.Test
             var workItemType = new WorkItemType();
             repository.Save(workItemType);
 
-            var savedUser = repository.Find(workItemType.Key);
-            Assert.That(savedUser.Name, Is.EqualTo(workItemType.Name));
+            var savedModel = repository.Find(workItemType.Key);
+            Assert.That(savedModel.Name, Is.EqualTo(workItemType.Name));
 
             workItemType.Name = "test";
             repository.Save(workItemType);
 
-            savedUser = repository.Find(workItemType.Key);
-            Assert.That(savedUser.Name, Is.EqualTo(workItemType.Name));
+            savedModel = repository.Find(workItemType.Key);
+            Assert.That(savedModel.Name, Is.EqualTo(workItemType.Name));
         }
 
         [Test]

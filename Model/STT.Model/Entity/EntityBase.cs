@@ -11,5 +11,13 @@ namespace STT.Model.Entity
         {
             Key = Guid.NewGuid();
         }
+
+        public bool IsEqualTo(EntityBase entity)
+        {
+            if (entity == null)
+                return false;
+
+            return Key == entity.Key;
+        }
     }
 }

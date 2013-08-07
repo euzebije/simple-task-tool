@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using STT.Data;
-using STT.Data.Memory;
+using STT.Data.File;
+using STT.Model.Entity;
 using STT.UI.Desktop.Common;
 using STT.UI.Desktop.View;
 using STT.UI.Desktop.View.Security;
@@ -17,7 +18,8 @@ namespace STT.UI.Desktop.App
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             var factory = new RepositoryFactory();
-            factory.CreateDefaultUserAccount();
+            //factory.GetUserAccountRepository().Save(new UserAccount("admin", "pwd", true, true));
+
             Container.RegisterInstance<IRepositoryFactory>(factory);
 
             Container.RegisterType<MainViewModel>();

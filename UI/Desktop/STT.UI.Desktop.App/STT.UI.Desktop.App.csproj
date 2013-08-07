@@ -104,9 +104,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Data\STT.Data.Memory\STT.Data.Memory.csproj">
-      <Project>{1ed7835f-5283-42e9-894a-0d8bf5eed5e6}</Project>
-      <Name>STT.Data.Memory</Name>
+    <ProjectReference Include="..\..\..\Data\STT.Data.File\STT.Data.File.csproj">
+      <Project>{a12fece7-b254-4619-87b7-eed4a123dbfe}</Project>
+      <Name>STT.Data.File</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Data\STT.Data\STT.Data.csproj">
       <Project>{4bb17672-45dc-42ba-af95-901050520841}</Project>
