@@ -14,7 +14,12 @@ namespace STT.Model.Entity
         public bool IsActive { get; set; }
         public bool IsPowerUser { get; set; }
 
-        public UserAccount(){}
+        public UserAccount()
+        {
+            var now = DateTime.Now;
+            CreatedOn = now;
+            LastLogin = now;
+        }
         public UserAccount(string username, string password, bool isActive, bool isPowerUser)
         {
             if (string.IsNullOrWhiteSpace(username))

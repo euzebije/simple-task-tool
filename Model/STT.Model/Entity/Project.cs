@@ -13,6 +13,7 @@ namespace STT.Model.Entity
 
         public Project()
         {
+            CreatedOn = DateTime.Now;
             WorkItems = new List<WorkItem>();
         }
         public Project(string name, string description, UserAccount owner)

@@ -210,4 +210,13 @@
   <data name="OldPassword" xml:space="preserve">
     <value>Old password</value>
   </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Edit - {0}</value>
+  </data>
+  <data name="NewProject" xml:space="preserve">
+    <value>New Project</value>
+  </data>
 </root>

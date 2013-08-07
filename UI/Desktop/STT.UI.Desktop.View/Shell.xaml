@@ -9,7 +9,9 @@
     <Grid>
         <TabControl Margin="2">
             <TabItem Header="{x:Static common:Localization.WorkItems}"></TabItem>
-            <TabItem Header="{x:Static common:Localization.Projects}"></TabItem>
+            <TabItem Header="{x:Static common:Localization.Projects}">
+                <view:ProjectListView DataContext="{Binding ProjectList}"/>
+            </TabItem>
             <TabItem Header="{x:Static common:Localization.WorkItemTypes}" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
                 <view:WorkItemTypeListView DataContext="{Binding WorkItemTypeList}"/>
             </TabItem>

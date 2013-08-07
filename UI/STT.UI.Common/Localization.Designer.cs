@@ -135,6 +135,15 @@ namespace STT.UI.Common {
         /// <summary>
         ///   Looks up a localized string similar to Edit - {0}.
         /// </summary>
+        public static string EditProject {
+            get {
+                return ResourceManager.GetString("EditProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit - {0}.
+        /// </summary>
         public static string EditUserAccount {
             get {
                 return ResourceManager.GetString("EditUserAccount", resourceCulture);
@@ -205,6 +214,15 @@ namespace STT.UI.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Project.
+        /// </summary>
+        public static string NewProject {
+            get {
+                return ResourceManager.GetString("NewProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New User Account.
         /// </summary>
         public static string NewUserAccount {
@@ -237,6 +255,15 @@ namespace STT.UI.Common {
         public static string OldPassword {
             get {
                 return ResourceManager.GetString("OldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Owner.
+        /// </summary>
+        public static string Owner {
+            get {
+                return ResourceManager.GetString("Owner", resourceCulture);
             }
         }
         
