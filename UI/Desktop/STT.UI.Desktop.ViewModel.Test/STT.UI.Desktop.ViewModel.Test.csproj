@@ -70,6 +70,7 @@
     <Compile Include="ViewModelBaseTest.cs" />
     <Compile Include="ViewModels\WorkItemTypeListViewModelTest.cs" />
     <Compile Include="ViewModels\WorkItemTypeViewModelTest.cs" />
+    <Compile Include="ViewModels\WorkItemViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Data\STT.Data.Memory\STT.Data.Memory.csproj">

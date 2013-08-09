@@ -15,7 +15,14 @@ namespace STT.Model.Entity
         public Project Project { get; set; }
         public bool IsFinished { get; set; }
 
-        public WorkItem() {}
+        public WorkItem()
+        {
+            var now = DateTime.Now;
+            CreatedOn = now;
+            LastUpdate = now;
+
+            Priority = Priority.Normal;
+        }
         public WorkItem(string title, string description, UserAccount createdBy, Priority priority, WorkItemType type, Project project)
         {
             if (string.IsNullOrWhiteSpace(title))

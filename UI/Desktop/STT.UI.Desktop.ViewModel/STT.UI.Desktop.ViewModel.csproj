@@ -71,6 +71,7 @@
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModels\WorkItemTypeListViewModel.cs" />
     <Compile Include="ViewModels\WorkItemTypeViewModel.cs" />
+    <Compile Include="ViewModels\WorkItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Data\STT.Data\STT.Data.csproj">
