@@ -68,6 +68,7 @@
     <Compile Include="ViewModels\UserAccountListViewModelTest.cs" />
     <Compile Include="ViewModels\UserAccountViewModelTest.cs" />
     <Compile Include="ViewModelBaseTest.cs" />
+    <Compile Include="ViewModels\WorkItemListViewModelTest.cs" />
     <Compile Include="ViewModels\WorkItemTypeListViewModelTest.cs" />
     <Compile Include="ViewModels\WorkItemTypeViewModelTest.cs" />
     <Compile Include="ViewModels\WorkItemViewModelTest.cs" />
@@ -84,6 +85,10 @@
     <ProjectReference Include="..\..\..\Model\STT.Model\STT.Model.csproj">
       <Project>{23c2be2f-1b7d-44fe-b390-e0450540a18b}</Project>
       <Name>STT.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\STT.UI.Desktop.Common\STT.UI.Desktop.Common.csproj">
+      <Project>{708cae92-3985-4326-88f4-19c871d3aed3}</Project>
+      <Name>STT.UI.Desktop.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\STT.UI.Desktop.ViewModel\STT.UI.Desktop.ViewModel.csproj">
       <Project>{ee5b16c0-ca26-450d-94e2-4f0b3f193d58}</Project>

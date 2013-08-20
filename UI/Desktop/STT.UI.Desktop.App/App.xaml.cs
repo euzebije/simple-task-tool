@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using STT.Data;
 using STT.Data.File;
-using STT.Model.Entity;
 using STT.UI.Desktop.Common;
 using STT.UI.Desktop.View;
 using STT.UI.Desktop.View.Security;
@@ -18,7 +17,7 @@ namespace STT.UI.Desktop.App
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             var factory = new RepositoryFactory();
-            //factory.GetUserAccountRepository().Save(new UserAccount("admin", "pwd", true, true));
+            //factory.GetUserAccountRepository().Save(new Model.Entity.UserAccount("admin", "pwd", true, true));
 
             Container.RegisterInstance<IRepositoryFactory>(factory);
 
@@ -34,7 +33,7 @@ namespace STT.UI.Desktop.App
             
             if (loginSuccessful == true)
             {
-                shell.ViewModel.LoggedInUser = loginView.UserAccount;
+                AppSession.SetLoggedInUser(loginView.UserAccount);
                 shell.Show();
             }
             else

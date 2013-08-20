@@ -83,11 +83,17 @@
     <Compile Include="Views\UserAccountListView.xaml.cs">
       <DependentUpon>UserAccountListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WorkItemListView.xaml.cs">
+      <DependentUpon>WorkItemListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WorkItemTypeListView.xaml.cs">
       <DependentUpon>WorkItemTypeListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ChangeUserAccountPassword.xaml.cs">
       <DependentUpon>ChangeUserAccountPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewEditWorkItem.xaml.cs">
+      <DependentUpon>NewEditWorkItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\NewEditProject.xaml.cs">
       <DependentUpon>NewEditProject.xaml</DependentUpon>
@@ -134,11 +140,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\WorkItemListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WorkItemTypeListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ChangeUserAccountPassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NewEditWorkItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

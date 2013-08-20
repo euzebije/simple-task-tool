@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using STT.Data;
 using STT.Model.Entity;
 using STT.UI.Common;
+using STT.UI.Desktop.Common;
 
 namespace STT.UI.Desktop.ViewModel
 {
     public class WorkItemViewModel : ViewModelBase<WorkItem>
     {
-        private readonly UserAccount _loggedInUser;
-
         private string _backupTitle;
         private string _backupDescription;
         private UserAccount _backupAssignedTo;
@@ -17,10 +17,9 @@ namespace STT.UI.Desktop.ViewModel
         private Project _backupProject;
         private bool _backupIsFinished;
 
-        public WorkItemViewModel(WorkItem model, IRepositoryFactory repositoryFactory, UserAccount loggedInUser)
+        public WorkItemViewModel(WorkItem model, IRepositoryFactory repositoryFactory)
             : base(model, repositoryFactory)
         {
-            _loggedInUser = loggedInUser;
         }
 
         public string Title
@@ -120,11 +119,28 @@ namespace STT.UI.Desktop.ViewModel
             }
         }
 
+        public IEnumerable<UserAccount> AssignedToList
+        {
+            get { return RepositoryFactory.GetUserAccountRepository().Get(); }
+        }
+        public IEnumerable<Priority> PriorityList
+        {
+            get { return new[] {Priority.Low, Priority.Normal, Priority.High}; }
+        }
+        public IEnumerable<WorkItemType> TypeList
+        {
+            get { return RepositoryFactory.GetWorkItemTypeRepository().Get(); }
+        }
+        public IEnumerable<Project> ProjectList
+        {
+            get { return RepositoryFactory.GetProjectRepository().Get(); }
+        }
+
         public override void Save()
         {
             Model.LastUpdate = DateTime.Now;
             if (Model.CreatedBy == null)
-                Model.CreatedBy = _loggedInUser;
+                Model.CreatedBy = AppSession.LoggedInUser;
 
             base.Save();
         }

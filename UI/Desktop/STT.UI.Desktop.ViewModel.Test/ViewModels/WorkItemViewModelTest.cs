@@ -2,24 +2,31 @@
 using NUnit.Framework;
 using STT.Data.Memory;
 using STT.Model.Entity;
+using STT.UI.Desktop.Common;
 
 namespace STT.UI.Desktop.ViewModel.Test
 {
     [TestFixture]
     public class WorkItemViewModelTest
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            AppSession.SetLoggedInUser(new UserAccount());
+        }
+
         [Test]
         public void CreateEmpty()
         {
             var model = new WorkItem();
-            var viewModel = new WorkItemViewModel(model, new RepositoryFactory(), new UserAccount());
+            var viewModel = new WorkItemViewModel(model, new RepositoryFactory());
             Assert.That(viewModel, Is.Not.Null);
         }
 
         [Test]
         public void InheritsViewModelBase()
         {
-            var viewModel = new WorkItemViewModel(new WorkItem(), new RepositoryFactory(), new UserAccount());
+            var viewModel = new WorkItemViewModel(new WorkItem(), new RepositoryFactory());
             Assert.That(viewModel, Is.InstanceOf<ViewModelBase>());
         }
 
@@ -27,7 +34,7 @@ namespace STT.UI.Desktop.ViewModel.Test
         public void WrapsModel()
         {
             var model = new WorkItem("test", "description", new UserAccount(), Priority.Normal, new WorkItemType(), new Project());
-            var viewModel = new WorkItemViewModel(model, new RepositoryFactory(), new UserAccount());
+            var viewModel = new WorkItemViewModel(model, new RepositoryFactory());
 
             Assert.That(viewModel.Title, Is.EqualTo(model.Title));
             Assert.That(viewModel.Description, Is.EqualTo(model.Description));
@@ -49,7 +56,7 @@ namespace STT.UI.Desktop.ViewModel.Test
             var repo = factory.GetWorkItemRepository();
 
             var model = new WorkItem();
-            var viewModel = new WorkItemViewModel(model, factory, new UserAccount());
+            var viewModel = new WorkItemViewModel(model, factory);
 
             var assignedTo = new UserAccount();
             var type = new WorkItemType();
@@ -101,7 +108,7 @@ namespace STT.UI.Desktop.ViewModel.Test
             var model = new WorkItem("test", "description", new UserAccount(), Priority.Normal, new WorkItemType(), new Project());
             repo.Save(model);
 
-            var viewModel = new WorkItemViewModel(model, factory, new UserAccount());
+            var viewModel = new WorkItemViewModel(model, factory);
 
             var assignedTo = new UserAccount();
             var type = new WorkItemType();
@@ -151,7 +158,7 @@ namespace STT.UI.Desktop.ViewModel.Test
             var model = new WorkItem("test", "description", new UserAccount(), Priority.Normal, type, project);
             repo.Save(model);
 
-            var viewModel = new WorkItemViewModel(model, factory, new UserAccount());
+            var viewModel = new WorkItemViewModel(model, factory);
             viewModel.ModelSaved += itemViewModel => Assert.Fail();
 
             viewModel.IsInEditMode = true;
@@ -182,7 +189,7 @@ namespace STT.UI.Desktop.ViewModel.Test
 
             Assert.That(repo.Get(), Is.Empty);
 
-            var viewModel = new WorkItemViewModel(new WorkItem(), factory, new UserAccount());
+            var viewModel = new WorkItemViewModel(new WorkItem(), factory);
 
             Assert.That(viewModel.IsValid, Is.False);
             viewModel.Save();

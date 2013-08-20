@@ -231,4 +231,25 @@
   <data name="Type" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="EditWorkItem" xml:space="preserve">
+    <value>Edit - {0}</value>
+  </data>
+  <data name="NewWorkItem" xml:space="preserve">
+    <value>New Work Item</value>
+  </data>
+  <data name="AssignedTo" xml:space="preserve">
+    <value>Assigned to</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Created by</value>
+  </data>
+  <data name="IsFinished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="LastUpdate" xml:space="preserve">
+    <value>Last update</value>
+  </data>
 </root>

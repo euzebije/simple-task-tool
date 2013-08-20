@@ -69,6 +69,7 @@
     <Compile Include="ViewModels\UserAccountListViewModel.cs" />
     <Compile Include="ViewModels\UserAccountViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Compile Include="ViewModels\WorkItemListViewModel.cs" />
     <Compile Include="ViewModels\WorkItemTypeListViewModel.cs" />
     <Compile Include="ViewModels\WorkItemTypeViewModel.cs" />
     <Compile Include="ViewModels\WorkItemViewModel.cs" />

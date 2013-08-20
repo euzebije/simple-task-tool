@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="STT.UI.Desktop.View.WorkItemListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:common="clr-namespace:STT.UI.Common;assembly=STT.UI.Common" 
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static common:Localization.Title}" Binding="{Binding Title}" Width="150"/>
+                <DataGridTextColumn Header="{x:Static common:Localization.AssignedTo}" Binding="{Binding AssignedTo.Username}" Width="150"/>
+                <DataGridTextColumn Header="{x:Static common:Localization.Priority}" Binding="{Binding Priority}" Width="150"/>
+                <DataGridTextColumn Header="{x:Static common:Localization.Type}" Binding="{Binding Type.Name}" Width="150"/>
+                <DataGridTextColumn Header="{x:Static common:Localization.Project}" Binding="{Binding Project.Name}" Width="150"/>
+                <DataGridTextColumn Header="{x:Static common:Localization.CreatedBy}" Binding="{Binding CreatedBy.Username}" Width="150"/>
+                <DataGridTextColumn Header="{x:Static common:Localization.CreatedOn}" Binding="{Binding CreatedOn}" Width="150"/>
+                <DataGridTextColumn Header="{x:Static common:Localization.LastUpdate}" Binding="{Binding LastUpdate}" Width="150"/>
+                <DataGridCheckBoxColumn Header="{x:Static common:Localization.IsFinished}" Binding="{Binding IsFinished}" Width="75"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Margin="2" Width="75" Content="{x:Static common:Localization.New}" Command="{Binding NewCommand}"/>
+            <Button Margin="2" Width="75" Content="{x:Static common:Localization.Edit}" Command="{Binding EditCommand}"/>
+            <Button Margin="2" Width="75" Content="{x:Static common:Localization.Delete}" Command="{Binding DeleteCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
